@@ -53,7 +53,7 @@ function MockupCard({ card, index }: { card: typeof mockupCards[0]; index: numbe
   return (
     <motion.div
       className="absolute w-48 sm:w-56 bg-dark-3 border border-gold/15 rounded-xl p-3.5 shadow-2xl shadow-black/60 backdrop-blur-sm"
-      style={card.position as React.CSSProperties}
+      style={card.position as unknown as React.CSSProperties}
       initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={{
         opacity: 1,

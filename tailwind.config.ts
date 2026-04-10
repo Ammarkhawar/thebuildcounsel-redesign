@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Project tokens
         gold: "#C8411C",
         "gold-light": "#e05a32",
         "gold-dim": "rgba(200,65,28,0.12)",
@@ -20,6 +21,34 @@ const config: Config = {
         "warm-white": "#f5f2f0",
         muted: "#8a8784",
         border: "rgba(200,65,28,0.2)",
+        // shadcn/ui tokens
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+        },
+        input: "var(--input)",
+        ring: "var(--ring)",
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
