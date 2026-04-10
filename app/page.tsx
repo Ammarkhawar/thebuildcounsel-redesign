@@ -4,6 +4,8 @@ import CustomCursor from "@/components/CustomCursor";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import MarqueeSection from "@/components/MarqueeSection";
+import ProblemSection from "@/components/ProblemSection";
 import AuthorityStack from "@/components/AuthorityStack";
 import Results from "@/components/Results";
 import Stats from "@/components/Stats";
@@ -17,10 +19,14 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
-      <AnnouncementBar />
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <AnnouncementBar />
+        <Navbar />
+      </div>
       <main>
         <HeroSection />
+        <MarqueeSection />
+        <ProblemSection />
         <AuthorityStack />
         <Results />
         <Stats />

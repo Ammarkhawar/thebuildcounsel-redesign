@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const features = [
   "Full SEO & AI Search Optimization",
@@ -32,6 +33,47 @@ const faqs = [
     a: "Never. Once you're a client, we protect your market position exclusively. We don't work with your competitors.",
   },
 ];
+
+function FaqItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      className="bg-dark-2 border border-gold/10 rounded-xl overflow-hidden hover:border-gold/20 transition-colors duration-300"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <button
+        className="w-full flex items-center justify-between p-5 text-left gap-4"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+      >
+        <h4 className="font-sans text-sm font-medium text-warm-white">{faq.q}</h4>
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="shrink-0 text-muted"
+        >
+          <ChevronDown size={16} />
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+          >
+            <p className="text-sm text-muted leading-relaxed px-5 pb-5">{faq.a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
 
 export default function Pricing() {
   const ref = useRef(null);
@@ -68,22 +110,22 @@ export default function Pricing() {
             animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            {/* Top bar */}
-            <div className="bg-gradient-to-r from-gold via-gold-light to-gold p-px">
-              <div className="bg-dark-2 px-8 py-5 flex items-center justify-between">
-                <div>
-                  <div className="text-[10px] font-sans font-medium text-muted tracking-[0.2em] uppercase mb-1">
-                    The Authority Stack™
-                  </div>
-                  <h3 className="font-serif text-2xl text-warm-white font-light">Full Stack Package</h3>
+            {/* Top bar with gold accent line */}
+            <div className="bg-gradient-to-r from-gold via-gold-light to-gold h-0.5" />
+            <div className="px-8 py-5 border-b border-gold/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <div className="text-[10px] font-sans font-medium text-muted tracking-[0.2em] uppercase mb-1.5 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-gold rounded-full" aria-hidden="true" />
+                  The Authority Stack™
                 </div>
-                <div className="text-right">
-                  <div className="font-serif text-4xl text-warm-white font-light">
-                    $5,000
-                    <span className="text-lg text-muted font-sans">/mo</span>
-                  </div>
-                  <div className="text-xs text-muted font-sans">+ ad spend (you control)</div>
+                <h3 className="font-serif text-2xl text-warm-white font-light">Full Stack Package</h3>
+              </div>
+              <div className="sm:text-right">
+                <div className="font-serif text-4xl text-warm-white font-light">
+                  $5,000
+                  <span className="text-lg text-muted font-sans">/mo</span>
                 </div>
+                <div className="text-xs text-muted font-sans mt-0.5">+ ad spend (you control)</div>
               </div>
             </div>
 
@@ -96,7 +138,7 @@ export default function Pricing() {
                 {features.map((f) => (
                   <div key={f} className="flex items-start gap-3">
                     <div className="w-4 h-4 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
                         <path d="M1.5 4L3 5.5L6.5 2" stroke="#C8411C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
@@ -105,10 +147,10 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 mb-5">
                 <a href="#contact" className="btn-primary flex-1 justify-center text-sm py-3.5">
                   Book a Strategy Call
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </a>
@@ -117,9 +159,16 @@ export default function Pricing() {
                 </a>
               </div>
 
-              <p className="text-center text-xs text-muted/50 font-sans mt-4">
-                6-month initial term · No setup fees · Cancel anytime after
-              </p>
+              {/* Trust signals */}
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+                {["No setup fees", "Results in 90 days", "Market exclusivity"].map((trust, i) => (
+                  <span key={trust} className="flex items-center gap-1.5 text-xs text-muted/50 font-sans">
+                    {i > 0 && <span className="hidden sm:block w-px h-3 bg-gold/20" />}
+                    <span className="text-gold/50">✓</span>
+                    {trust}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -134,20 +183,13 @@ export default function Pricing() {
           >
             Common Questions
           </motion.h3>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={faq.q}
-                className="bg-dark-2 border border-gold/10 rounded-xl p-5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={faqInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <h4 className="font-sans text-sm font-medium text-warm-white mb-2">{faq.q}</h4>
-                <p className="text-sm text-muted leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
+          {faqInView && (
+            <div className="space-y-3">
+              {faqs.map((faq, i) => (
+                <FaqItem key={faq.q} faq={faq} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

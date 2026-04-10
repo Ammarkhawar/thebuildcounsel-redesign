@@ -5,104 +5,259 @@ import { motion, useInView } from "framer-motion";
 
 const rotatingWords = ["Dominate", "Own", "Lead", "Win"];
 
-const mockupCards = [
-  {
-    id: "chatgpt",
-    label: "ChatGPT",
-    icon: "✦",
-    color: "#10a37f",
-    content: "What's the best personal injury law firm in Houston?",
-    response: "Based on case outcomes and client reviews, Morrison & Associates stands out...",
-    delay: 0,
-    position: { top: "8%", left: "2%", rotate: -8 },
-  },
-  {
-    id: "google",
-    label: "Google Search",
-    icon: "G",
-    color: "#4285F4",
-    content: "best criminal defense attorney near me",
-    tags: ["Ad", "#1 Organic", "Maps Pack"],
-    delay: 0.15,
-    position: { top: "5%", right: "2%", rotate: 6 },
-  },
-  {
-    id: "maps",
-    label: "Google Maps",
-    icon: "◎",
-    color: "#EA4335",
-    content: "Law Offices — 4.9 ★ (312 reviews)",
-    sub: "Open now · Personal Injury",
-    delay: 0.3,
-    position: { bottom: "12%", left: "0%", rotate: -4 },
-  },
-  {
-    id: "organic",
-    label: "Organic Search",
-    icon: "↑",
-    color: "#C8411C",
-    content: "Position #1",
-    sub: "12 keywords in top 3",
-    delta: "+340% traffic",
-    delay: 0.45,
-    position: { bottom: "8%", right: "0%", rotate: 5 },
-  },
-];
-
-function MockupCard({ card, index }: { card: typeof mockupCards[0]; index: number }) {
+// ─── Floating card wrapper ────────────────────────────────────────────────────
+function FloatCard({
+  children,
+  style,
+  delay,
+  floatDuration,
+  className = "",
+}: {
+  children: React.ReactNode;
+  style: React.CSSProperties;
+  delay: number;
+  floatDuration: number;
+  className?: string;
+}) {
   return (
     <motion.div
-      className="absolute w-48 sm:w-56 bg-dark-3 border border-gold/15 rounded-xl p-3.5 shadow-2xl shadow-black/60 backdrop-blur-sm"
-      style={card.position as unknown as React.CSSProperties}
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-      animate={{
-        opacity: 1,
-        y: [0, -8, 0],
-        scale: 1,
-        transition: {
-          opacity: { delay: card.delay, duration: 0.6 },
-          scale: { delay: card.delay, duration: 0.6 },
-          y: {
-            delay: card.delay + 0.6,
-            duration: 4 + index * 0.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-        },
-      }}
+      className={`absolute pointer-events-none ${className}`}
+      style={style}
+      initial={{ opacity: 0, scale: 0.88 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="flex items-center gap-2 mb-2.5">
-        <span
-          className="w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px] font-bold shrink-0"
-          style={{ backgroundColor: card.color }}
-        >
-          {card.icon}
-        </span>
-        <span className="text-[10px] font-sans font-medium text-muted tracking-wide uppercase">
-          {card.label}
-        </span>
-      </div>
-      <p className="text-xs font-sans text-warm-white leading-relaxed mb-1.5">{card.content}</p>
-      {card.response && (
-        <p className="text-[10px] text-muted leading-relaxed line-clamp-2">{card.response}</p>
-      )}
-      {card.tags && (
-        <div className="flex gap-1 flex-wrap mt-1">
-          {card.tags.map((t) => (
-            <span key={t} className="text-[9px] bg-gold/15 text-gold rounded px-1.5 py-0.5 font-medium">
-              {t}
-            </span>
-          ))}
-        </div>
-      )}
-      {card.sub && <p className="text-[10px] text-muted mt-1">{card.sub}</p>}
-      {card.delta && (
-        <span className="text-[10px] text-emerald-400 font-medium mt-1 block">{card.delta}</span>
-      )}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{ delay: delay + 0.6, duration: floatDuration, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {children}
+      </motion.div>
     </motion.div>
   );
 }
 
+// ─── Card 1: ChatGPT (top-left) ───────────────────────────────────────────────
+function ChatGPTCard() {
+  return (
+    <FloatCard
+      style={{ top: "13%", left: "3%", rotate: "-6deg" } as React.CSSProperties}
+      delay={0}
+      floatDuration={4}
+      className="w-56"
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/40 overflow-hidden">
+        <div className="px-4 pt-4 pb-3">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-1">
+              <span className="text-[12px] font-semibold text-gray-900">ChatGPT</span>
+              <span className="text-[11px] text-gray-400 ml-0.5">5.2</span>
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none" className="mt-0.5">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <div className="flex items-center gap-2 text-gray-300">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" strokeLinecap="round"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Heading */}
+          <p className="text-center text-[13px] font-semibold text-gray-900 mb-3 leading-snug">
+            What's on your mind today?
+          </p>
+
+          {/* Input bar */}
+          <div className="border border-gray-200 rounded-full px-3 py-2 flex items-center gap-1.5 bg-white">
+            <span className="text-gray-400 text-[13px] leading-none font-light shrink-0">+</span>
+            <span className="text-[9.5px] text-gray-500 flex-1 truncate">
+              help me find best injury attorney in Toronto
+            </span>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="1.8" className="shrink-0">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" strokeLinecap="round"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4" strokeLinecap="round"/>
+            </svg>
+            <div className="w-5 h-5 bg-gray-900 rounded-full flex items-center justify-center shrink-0">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </FloatCard>
+  );
+}
+
+// ─── Card 2: Google Search bar (top-right) ────────────────────────────────────
+function GoogleSearchBarCard() {
+  return (
+    <FloatCard
+      style={{ top: "14%", right: "3%", rotate: "5deg" } as React.CSSProperties}
+      delay={0.15}
+      floatDuration={4.5}
+      className="w-64"
+    >
+      <div className="bg-white rounded-full shadow-2xl shadow-black/40 border border-gray-200 px-5 py-3 flex items-center gap-3">
+        <span className="text-[13px] text-gray-600 flex-1 whitespace-nowrap">Lawyer near me</span>
+        <div className="flex items-center gap-2 shrink-0">
+          {/* X */}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2" strokeLinecap="round">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+          {/* Divider */}
+          <div className="w-px h-4 bg-gray-300" />
+          {/* Google Mic — multicolor */}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="9" y="1" width="6" height="11" rx="3" fill="#4285F4"/>
+            <path d="M5 10v2a7 7 0 0 0 14 0v-2" stroke="#34A853" strokeWidth="1.6" fill="none" strokeLinecap="round"/>
+            <line x1="12" y1="19" x2="12" y2="23" stroke="#FBBC04" strokeWidth="1.6" strokeLinecap="round"/>
+            <line x1="9" y1="23" x2="15" y2="23" stroke="#EA4335" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+          {/* Search */}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="7" stroke="#4285F4" strokeWidth="2"/>
+            <path d="M16.5 16.5L21 21" stroke="#4285F4" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </FloatCard>
+  );
+}
+
+// ─── Card 3: Google Maps business listing (bottom-left) ───────────────────────
+function GoogleMapsCard() {
+  return (
+    <FloatCard
+      style={{ bottom: "15%", left: "3%", rotate: "-4deg" } as React.CSSProperties}
+      delay={0.3}
+      floatDuration={5}
+      className="w-[270px]"
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/40 overflow-hidden p-4">
+        <div className="flex gap-3">
+          {/* Left: business info */}
+          <div className="flex-1 min-w-0">
+            <p className="text-[12px] font-bold text-gray-900 leading-tight mb-1">
+              Brian Lipsum, Attorney At Law
+            </p>
+            <div className="flex items-center gap-1 mb-0.5">
+              <span className="text-[10px] font-semibold text-gray-800">5.0</span>
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="9" height="9" viewBox="0 0 24 24" fill="#FBBC04">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <span className="text-[9px] text-gray-500">(686) · Personal injury attorney</span>
+            </div>
+            <p className="text-[9px] text-gray-500 leading-snug mb-0.5">
+              15+ years in business · 100 Dixie Rd, Toronto, Canada
+            </p>
+            <p className="text-[9px] mb-1">
+              <span className="text-green-600 font-semibold">Open 24 hours</span>
+              <span className="text-gray-500"> · +1 365-805-5602</span>
+            </p>
+            <div className="flex items-start gap-1">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="#9ca3af" className="mt-0.5 shrink-0">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              </svg>
+              <p className="text-[9px] text-gray-500 italic leading-snug">
+                "… Brian Lispum really helped me with my{" "}
+                <span className="font-bold not-italic text-gray-700">personal injury</span> case."
+              </p>
+            </div>
+          </div>
+
+          {/* Right: action buttons */}
+          <div className="flex flex-col items-center gap-2 shrink-0">
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="#4285F4" strokeWidth="1.5"/>
+                  <path d="M2 12h20" stroke="#4285F4" strokeWidth="1.2"/>
+                  <path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" stroke="#4285F4" strokeWidth="1.2"/>
+                </svg>
+              </div>
+              <span className="text-[8px] text-blue-600 font-medium">Website</span>
+            </div>
+            <div className="flex flex-col items-center gap-0.5">
+              <div className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4">
+                  <path d="M12 2.1L2.1 11.5l2.4.8L12 5.3l7.5 7 2.4-.8z"/>
+                  <path d="M12 5.3v16.4" stroke="white" strokeWidth="1.5"/>
+                  <path d="M5 12v9.7h4.5V16H14v5.7h4.5V12" fill="#4285F4"/>
+                </svg>
+              </div>
+              <span className="text-[8px] text-blue-600 font-medium">Directions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </FloatCard>
+  );
+}
+
+// ─── Card 4: Google Search organic result (bottom-right) ──────────────────────
+function GoogleSearchResultCard() {
+  return (
+    <FloatCard
+      style={{ bottom: "15%", right: "3%", rotate: "4deg" } as React.CSSProperties}
+      delay={0.45}
+      floatDuration={3.8}
+      className="w-60"
+    >
+      <div className="bg-white rounded-2xl shadow-2xl shadow-black/40 overflow-hidden p-4">
+        {/* Source row */}
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-5 h-5 rounded-full bg-gray-800 border border-gray-200 flex items-center justify-center shrink-0">
+            <span className="text-white text-[7px] font-bold">BL</span>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-[10px] font-medium text-gray-800 truncate">Brian Lipsum Law</p>
+            <p className="text-[9px] text-gray-400 truncate">https://www.brianlispumtoronto.com</p>
+          </div>
+          <div className="flex flex-col gap-[3px] items-center shrink-0">
+            {[0,1,2].map(i => <div key={i} className="w-[3px] h-[3px] bg-gray-400 rounded-full" />)}
+          </div>
+        </div>
+
+        {/* Title */}
+        <p className="text-[11px] font-medium text-blue-700 leading-snug mb-1.5">
+          #1 Attorney in Toronto — Brian Lispum, Attorney At Law
+        </p>
+
+        {/* Description */}
+        <p className="text-[9px] text-gray-600 leading-relaxed mb-1.5">
+          Brian Lipsum <span className="font-bold">Injury Lawyers</span>: Protecting Your Rights After An Accident. Looking For A <span className="font-bold">Personal Injury Lawyer</span> in Toronto? Call Now For a 100% Free Consultation.
+        </p>
+
+        {/* Meta */}
+        <p className="text-[9px] text-gray-500 mb-2 leading-snug">
+          Personal Injury Lawyer · North York ·{" "}
+          <span className="text-red-500">Closed</span> · Opens 8 am
+        </p>
+
+        {/* CTA button */}
+        <div className="inline-flex items-center gap-1.5 border border-gray-300 rounded-full px-2.5 py-1">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4285F4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span className="text-[9px] text-blue-600 font-medium">Call us</span>
+        </div>
+      </div>
+    </FloatCard>
+  );
+}
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
 export default function HeroSection() {
   const [wordIndex, setWordIndex] = useState(0);
   const ref = useRef(null);
@@ -120,113 +275,127 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-28 pb-20"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-black">
+      <div className="absolute inset-0 bg-black bg-noise">
         <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/3 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/4 rounded-full blur-[140px]" />
       </div>
 
-      <div className="relative z-10 max-w-site w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left — Copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center lg:text-left"
-          >
-            <div className="label-tag mb-6 mx-auto lg:mx-0">
-              <span className="w-1.5 h-1.5 bg-gold rounded-full" />
-              Law Firms Only · No Exceptions
-            </div>
+      {/* Corner cards — desktop only */}
+      <div className="hidden lg:block" aria-hidden="true">
+        <ChatGPTCard />
+        <GoogleSearchBarCard />
+        <GoogleMapsCard />
+        <GoogleSearchResultCard />
+      </div>
 
-            <h1 className="heading-xl text-warm-white mb-6">
-              We Help Law Firms{" "}
-              <span className="block">
-                <motion.span
-                  key={wordIndex}
-                  className="text-gradient font-semibold italic"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  {rotatingWords[wordIndex]}
-                </motion.span>{" "}
-                Their Market
-              </span>
-            </h1>
+      {/* Centered content */}
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-6 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="label-tag mb-6 mx-auto">
+            <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" aria-hidden="true" />
+            Law Firms Only · No Exceptions
+          </div>
 
-            <p className="body-lg max-w-lg mx-auto lg:mx-0 mb-8">
-              The Authority Stack™ is a multi-channel growth system that turns search, paid ads,
-              social media, and conversion into a unified client acquisition machine — built
-              exclusively for law firms.
-            </p>
+          <h1 className="heading-xl text-warm-white mb-6">
+            We Help Law Firms{" "}
+            <span className="block">
+              <motion.span
+                key={wordIndex}
+                className="text-gradient font-semibold italic"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {rotatingWords[wordIndex]}
+              </motion.span>{" "}
+              Their Market
+            </span>
+          </h1>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-              <a href="#contact" className="btn-primary text-sm py-3.5 px-7">
-                Book a Strategy Call
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href="#services" className="btn-ghost text-sm py-3.5 px-7">
-                See the Authority Stack™
-              </a>
-            </div>
+          <p className="body-lg max-w-xl mx-auto mb-8">
+            The Authority Stack™ is a multi-channel growth system that turns search, paid ads,
+            social media, and conversion into a unified client acquisition machine — built
+            exclusively for law firms.
+          </p>
 
-            {/* Stat strip */}
-            <div className="flex gap-8 mt-12 justify-center lg:justify-start">
-              {[
-                { value: "$6B+", label: "Case Value Generated" },
-                { value: "100%", label: "Law Firms Only" },
-                { value: "8+", label: "Practice Areas" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="font-serif text-2xl font-semibold text-warm-white">{s.value}</div>
-                  <div className="text-xs text-muted font-sans mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="#contact" className="btn-primary text-sm py-3.5 px-7">
+              Book a Strategy Call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+            <a href="#services" className="btn-ghost text-sm py-3.5 px-7">
+              See the Authority Stack™
+            </a>
+          </div>
 
-          {/* Right — Mockup Cards */}
-          <motion.div
-            className="relative h-[420px] sm:h-[500px] hidden lg:block"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            {/* Center glow */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-48 h-48 bg-gold/8 rounded-full blur-3xl" />
-              <div className="absolute w-32 h-32 bg-gold/5 rounded-full blur-2xl" />
-            </div>
-
-            {/* Center badge */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="w-20 h-20 bg-dark-3 border border-gold/30 rounded-2xl flex flex-col items-center justify-center shadow-xl">
-                <div className="w-8 h-8 bg-gold rounded-lg flex items-center justify-center mb-1">
-                  <span className="font-serif text-white font-bold text-sm">BC</span>
-                </div>
-                <span className="text-[9px] text-muted font-sans text-center leading-tight">
-                  Authority<br />Stack™
-                </span>
+          {/* Stat strip */}
+          <div className="flex mt-12 justify-center">
+            {[
+              { value: "$6B+", label: "Case Value Generated" },
+              { value: "100%", label: "Law Firms Only" },
+              { value: "8+",   label: "Practice Areas" },
+            ].map((s, i) => (
+              <div
+                key={s.label}
+                className={`text-center ${i > 0 ? "border-l border-gold/15 pl-6" : "pr-6"}`}
+              >
+                <div className="font-serif text-2xl font-semibold text-warm-white">{s.value}</div>
+                <div className="text-xs text-muted font-sans mt-0.5">{s.label}</div>
               </div>
-            </div>
-
-            {mockupCards.map((card, i) => (
-              <MockupCard key={card.id} card={card} index={i} />
             ))}
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
+
+      {/* Mobile card strip */}
+      <motion.div
+        className="lg:hidden mt-10 w-full overflow-x-auto flex gap-3 pb-3 px-6 snap-x snap-mandatory"
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        aria-hidden="true"
+      >
+        {[
+          { label: "ChatGPT", color: "#10a37f", icon: "✦", text: "help me find best injury attorney in Toronto" },
+          { label: "Google Search", color: "#4285F4", icon: "G", text: "Lawyer near me" },
+          { label: "Google Maps", color: "#EA4335", icon: "◎", text: "Brian Lipsum, Attorney At Law · 5.0 ★" },
+          { label: "Organic #1", color: "#C8411C", icon: "↑", text: "#1 Attorney in Toronto · +340% traffic" },
+        ].map((card) => (
+          <div
+            key={card.label}
+            className="snap-start shrink-0 w-44 bg-dark-3 border border-gold/15 rounded-xl p-3 shadow-xl"
+          >
+            <div className="flex items-center gap-1.5 mb-2">
+              <span
+                className="w-4 h-4 rounded-full flex items-center justify-center text-white text-[9px] font-bold shrink-0"
+                style={{ backgroundColor: card.color }}
+              >
+                {card.icon}
+              </span>
+              <span className="text-[9px] font-sans font-medium text-muted tracking-wide uppercase truncate">
+                {card.label}
+              </span>
+            </div>
+            <p className="text-[11px] font-sans text-warm-white leading-snug">{card.text}</p>
+          </div>
+        ))}
+      </motion.div>
 
       {/* Scroll hint */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.8 }}
+        aria-hidden="true"
       >
         <span className="text-[10px] text-muted font-sans tracking-[0.2em] uppercase">Scroll</span>
         <motion.div

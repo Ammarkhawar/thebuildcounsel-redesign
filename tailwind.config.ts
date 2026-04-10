@@ -9,7 +9,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Project tokens
         gold: "#C8411C",
         "gold-light": "#e05a32",
         "gold-dim": "rgba(200,65,28,0.12)",
@@ -21,34 +20,6 @@ const config: Config = {
         "warm-white": "#f5f2f0",
         muted: "#8a8784",
         border: "rgba(200,65,28,0.2)",
-        // shadcn/ui tokens
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
-        },
-        popover: {
-          DEFAULT: "var(--popover)",
-          foreground: "var(--popover-foreground)",
-        },
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
-        },
-        accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
-        },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-        },
-        input: "var(--input)",
-        ring: "var(--ring)",
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
@@ -62,6 +33,8 @@ const config: Config = {
         "float-up": "floatUp 6s ease-in-out infinite",
         "banner-flow": "bannerFlow 20s linear infinite",
         "spin-slow": "spin 8s linear infinite",
+        "marquee": "marquee 28s linear infinite",
+        "marquee-reverse": "marqueeReverse 28s linear infinite",
       },
       keyframes: {
         floatUp: {
@@ -71,6 +44,14 @@ const config: Config = {
         bannerFlow: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeReverse: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
       backgroundImage: {

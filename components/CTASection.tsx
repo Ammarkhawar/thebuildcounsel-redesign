@@ -21,10 +21,11 @@ export default function CTASection() {
       ref={ref}
       className="section-pad relative overflow-hidden"
     >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/5 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/4 rounded-full blur-[100px]" />
+      {/* Stronger background glow */}
+      <div className="absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/6 to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gold/6 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-gold/8 rounded-full blur-[60px]" />
       </div>
 
       <div className="max-w-site relative z-10">
@@ -36,7 +37,7 @@ export default function CTASection() {
         >
           <div className="label-tag mb-6 mx-auto">Ready to Scale?</div>
 
-          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl text-warm-white font-light leading-[1.05] mb-6 tracking-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-warm-white font-light leading-[1.05] mb-6 tracking-tight">
             Ready to{" "}
             <AnimatePresence mode="wait">
               <motion.span
@@ -66,9 +67,10 @@ export default function CTASection() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base py-4 px-8"
+              aria-label="Book your free strategy call"
             >
               Book Your Strategy Call
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
@@ -81,27 +83,20 @@ export default function CTASection() {
           </div>
 
           {/* Trust signals */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-xs text-muted font-sans">
-            <span className="flex items-center gap-2">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6L5 9L10 3" stroke="#C8411C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              No commitment required for the call
-            </span>
-            <span className="hidden sm:block w-px h-3 bg-gold/20" />
-            <span className="flex items-center gap-2">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6L5 9L10 3" stroke="#C8411C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              30-minute strategy session, zero sales pressure
-            </span>
-            <span className="hidden sm:block w-px h-3 bg-gold/20" />
-            <span className="flex items-center gap-2">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6L5 9L10 3" stroke="#C8411C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Law firms only
-            </span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs text-muted font-sans">
+            {[
+              "No commitment required for the call",
+              "30-minute session, zero sales pressure",
+              "Law firms only",
+            ].map((text, i) => (
+              <span key={text} className="flex items-center gap-2">
+                {i > 0 && <span className="hidden sm:block w-px h-3 bg-gold/20" aria-hidden="true" />}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6L5 9L10 3" stroke="#C8411C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {text}
+              </span>
+            ))}
           </div>
         </motion.div>
       </div>

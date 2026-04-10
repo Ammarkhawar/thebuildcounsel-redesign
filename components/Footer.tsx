@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 const links = {
   Services: [
@@ -26,31 +26,50 @@ const links = {
   ],
 };
 
+const socials = [
+  { label: "LinkedIn", short: "Li", href: "#" },
+  { label: "Twitter / X", short: "Tw", href: "#" },
+  { label: "Facebook", short: "Fb", href: "#" },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-dark border-t border-gold/10">
+    <footer className="bg-dark relative">
+      {/* Top border gradient */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" aria-hidden="true" />
+
       <div className="max-w-site py-16">
         {/* Top */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
-                <span className="font-serif text-white font-semibold text-sm leading-none">BC</span>
-              </div>
-              <span className="font-serif text-warm-white text-base font-light">The Build Counsel</span>
+            <div className="mb-5">
+              <Image
+                src="/logo.svg"
+                alt="The Build Counsel"
+                width={110}
+                height={43}
+                className="h-8 w-auto"
+              />
             </div>
-            <p className="text-xs text-muted leading-relaxed mb-5 max-w-[200px]">
+            <p className="text-xs text-muted leading-relaxed mb-6 max-w-[200px]">
               The only growth agency built exclusively for law firms. Law Firms Only. No Exceptions.
             </p>
             <div className="flex gap-3">
-              {["Li", "Tw", "Fb"].map((s) => (
+              {socials.map((s) => (
                 <a
-                  key={s}
-                  href="#"
-                  className="w-7 h-7 bg-dark-3 border border-gold/10 rounded-md flex items-center justify-center text-[10px] text-muted hover:border-gold/30 hover:text-warm-white transition-all duration-200"
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.href === "#" ? `${s.label} (coming soon)` : s.label}
+                  aria-disabled={s.href === "#"}
+                  className={`w-7 h-7 bg-dark-3 border border-gold/10 rounded-md flex items-center justify-center text-[10px] font-sans font-medium transition-all duration-200 ${
+                    s.href === "#"
+                      ? "text-muted/40 cursor-not-allowed"
+                      : "text-muted hover:border-gold/30 hover:text-warm-white"
+                  }`}
+                  onClick={s.href === "#" ? (e) => e.preventDefault() : undefined}
                 >
-                  {s}
+                  {s.short}
                 </a>
               ))}
             </div>
@@ -85,7 +104,10 @@ export default function Footer() {
             <p className="text-xs text-muted font-sans mt-0.5">Limited spots available this quarter.</p>
           </div>
           <a href="#contact" className="btn-primary text-sm shrink-0">
-            Book a Strategy Call →
+            Book a Strategy Call
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </a>
         </div>
 
@@ -95,13 +117,18 @@ export default function Footer() {
             © {new Date().getFullYear()} The Build Counsel. All rights reserved.
           </p>
           <div className="flex items-center gap-1">
-            <span className="text-[10px] text-muted/40 font-sans">Law Firms Only</span>
-            <span className="text-gold/40 mx-2">·</span>
-            <span className="text-[10px] text-muted/40 font-sans">No Exceptions</span>
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-sans border border-gold/15 rounded-full px-3 py-1 text-gold/50">
+              <span className="w-1 h-1 bg-gold/40 rounded-full" aria-hidden="true" />
+              Law Firms Only · No Exceptions
+            </span>
           </div>
           <div className="flex gap-4">
             {["Privacy Policy", "Terms of Service"].map((t) => (
-              <a key={t} href="#" className="text-[11px] text-muted/50 hover:text-muted transition-colors font-sans">
+              <a
+                key={t}
+                href="#"
+                className="text-[11px] text-muted/50 hover:text-muted transition-colors font-sans"
+              >
                 {t}
               </a>
             ))}

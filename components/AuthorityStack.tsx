@@ -13,7 +13,8 @@ const pillars = [
     tags: ["Technical SEO", "Content Authority", "AI Search", "Local SEO"],
     gradient: "from-blue-500/10 to-transparent",
     accent: "#3b82f6",
-    span: "col-span-1",
+    metric: "+980%",
+    metricLabel: "organic growth",
   },
   {
     num: "02",
@@ -24,7 +25,8 @@ const pillars = [
     tags: ["Google Ads", "LSA", "PPC", "Retargeting"],
     gradient: "from-gold/10 to-transparent",
     accent: "#C8411C",
-    span: "col-span-1",
+    metric: "6.2×",
+    metricLabel: "lead multiplier",
   },
   {
     num: "03",
@@ -35,7 +37,8 @@ const pillars = [
     tags: ["Facebook Ads", "Instagram", "Brand Building", "Audience Targeting"],
     gradient: "from-purple-500/10 to-transparent",
     accent: "#a855f7",
-    span: "col-span-1",
+    metric: "+41%",
+    metricLabel: "brand lift",
   },
   {
     num: "04",
@@ -46,7 +49,8 @@ const pillars = [
     tags: ["Web Design", "CRO", "Intake Forms", "A/B Testing"],
     gradient: "from-emerald-500/10 to-transparent",
     accent: "#10b981",
-    span: "col-span-1",
+    metric: "38%",
+    metricLabel: "conv. lift",
   },
 ];
 
@@ -76,9 +80,9 @@ export default function AuthorityStack() {
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Anchor Card */}
+          {/* Anchor Card — spans 2 cols */}
           <motion.div
-            className="md:col-span-2 lg:col-span-2 lg:row-span-2 bg-dark-2 border border-gold/15 rounded-2xl p-8 relative overflow-hidden group"
+            className="md:col-span-2 lg:col-span-2 bg-dark-2 border border-gold/15 rounded-2xl p-8 relative overflow-hidden group"
             initial={{ opacity: 0, y: 40 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.1 }}
@@ -104,14 +108,17 @@ export default function AuthorityStack() {
                 all four growth channels into a single, compounding client acquisition machine.
               </p>
 
-              {/* Pillar indicators */}
+              {/* Pillar indicators with metrics */}
               <div className="grid grid-cols-2 gap-3">
                 {pillars.map((p) => (
-                  <div key={p.num} className="flex items-center gap-2.5 bg-dark-3 rounded-lg px-3 py-2.5">
-                    <span className="text-base" style={{ color: p.accent }}>{p.icon}</span>
-                    <div>
+                  <div key={p.num} className="flex items-center gap-2.5 bg-dark-3 rounded-lg px-3 py-2.5 group-hover:bg-dark-4 transition-colors duration-300">
+                    <span className="text-base shrink-0" style={{ color: p.accent }}>{p.icon}</span>
+                    <div className="flex-1 min-w-0">
                       <div className="text-[10px] text-muted font-sans">{p.num}</div>
-                      <div className="text-xs text-warm-white font-sans font-medium">{p.title}</div>
+                      <div className="text-xs text-warm-white font-sans font-medium truncate">{p.title}</div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <div className="text-[11px] font-serif font-semibold" style={{ color: p.accent }}>{p.metric}</div>
                     </div>
                   </div>
                 ))}
@@ -120,7 +127,7 @@ export default function AuthorityStack() {
               <div className="mt-8 pt-6 border-t border-gold/10 flex items-center justify-between">
                 <span className="text-xs text-muted font-sans">All channels. One team. Zero silos.</span>
                 <a href="#contact" className="text-gold text-xs font-sans hover:text-gold-light transition-colors flex items-center gap-1">
-                  Learn more →
+                  Get started →
                 </a>
               </div>
             </div>
@@ -130,7 +137,7 @@ export default function AuthorityStack() {
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.num}
-              className="bg-dark-2 border border-gold/10 rounded-2xl p-6 relative overflow-hidden group hover:border-gold/25 transition-all duration-500"
+              className="bg-dark-2 border border-gold/10 rounded-2xl p-6 relative overflow-hidden group hover:border-gold/25 hover:-translate-y-1 transition-all duration-400"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
@@ -146,6 +153,14 @@ export default function AuthorityStack() {
                 <h3 className="font-serif text-xl text-warm-white font-light mb-1">{pillar.title}</h3>
                 <p className="text-xs text-muted font-sans mb-3">{pillar.sub}</p>
                 <p className="text-xs text-muted/80 leading-relaxed mb-4">{pillar.desc}</p>
+
+                {/* Metric badge */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="font-serif text-lg font-semibold" style={{ color: pillar.accent }}>
+                    {pillar.metric}
+                  </span>
+                  <span className="text-[10px] text-muted font-sans">{pillar.metricLabel}</span>
+                </div>
 
                 <div className="flex flex-wrap gap-1.5">
                   {pillar.tags.map((tag) => (
