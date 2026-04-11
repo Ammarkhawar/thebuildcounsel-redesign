@@ -231,7 +231,7 @@ function GoogleMapsCardInner() {
 function GoogleMapsCard() {
   return (
     <FloatCard
-      position={{ bottom: "7%", left: "3%" }}
+      position={{ bottom: "32%", left: "3%" }}
       rotate="-4deg"
       delay={0.3}
       floatDuration={5}
@@ -291,7 +291,7 @@ function GoogleSearchResultInner() {
 function GoogleSearchResultCard() {
   return (
     <FloatCard
-      position={{ bottom: "7%", right: "3%" }}
+      position={{ bottom: "32%", right: "3%" }}
       rotate="4deg"
       delay={0.45}
       floatDuration={3.8}
