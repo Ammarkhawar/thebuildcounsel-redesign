@@ -33,7 +33,7 @@ export default function ProblemSection() {
     <section
       id="problem"
       ref={ref}
-      className="relative section-pad bg-dark border-b border-gold/8"
+      className="relative section-pad pb-8 md:pb-12 bg-dark"
     >
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
