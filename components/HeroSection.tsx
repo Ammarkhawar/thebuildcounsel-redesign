@@ -318,7 +318,7 @@ export default function HeroSection() {
     <section
       ref={ref}
       id="home"
-      className="relative min-h-[185vh] md:min-h-[140vh] flex flex-col items-center justify-start overflow-hidden pt-44 pb-40 md:pb-24"
+      className="relative min-h-[155vh] md:min-h-[140vh] flex flex-col items-center justify-start overflow-hidden pt-44 pb-24 md:pb-24"
     >
       {/* Background — pure black sky on top, image anchored to bottom 75% */}
       <div className="absolute inset-0 bg-black">
@@ -359,7 +359,7 @@ export default function HeroSection() {
             Law Firms Only · No Exceptions
           </div>
 
-          <h1 className="font-serif font-light leading-[1.05] tracking-tight text-warm-white mb-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="font-serif font-light leading-[1.05] tracking-tight text-warm-white mb-5 text-[2.5rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
             We Help Law Firms{" "}
             <span className="block">
               <motion.span
