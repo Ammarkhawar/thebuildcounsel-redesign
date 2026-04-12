@@ -68,7 +68,7 @@ export default function MarqueeSection() {
   return (
     <section
       aria-hidden="true"
-      className="relative overflow-x-clip bg-dark h-[220px] md:h-[380px]"
+      className="relative overflow-x-clip bg-dark h-[140px] md:h-[380px]"
     >
       {/* Subtle vignette for depth behind the tapes */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,65,28,0.12),transparent_70%)]" />
