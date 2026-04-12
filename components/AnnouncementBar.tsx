@@ -1,57 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { Banner } from "@/components/ui/banner";
 
 export default function AnnouncementBar() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    // sessionStorage re-shows on every new browser session (good for conversion)
-    if (!sessionStorage.getItem("ann-dismissed")) {
-      setVisible(true);
-    }
-  }, []);
-
-  const dismiss = () => {
-    setVisible(false);
-    sessionStorage.setItem("ann-dismissed", "1");
-  };
-
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          role="banner"
-          className="relative overflow-hidden bg-gradient-to-r from-gold/90 via-gold to-gold-light/90 text-white text-xs font-sans font-medium"
-        >
-          <div className="flex items-center justify-center gap-2.5 px-10 py-2.5 text-center">
-            <span className="w-1.5 h-1.5 bg-white/80 rounded-full animate-pulse shrink-0" aria-hidden="true" />
-            <span>
-              Limited Spots — We only take on{" "}
-              <strong className="font-semibold">3 new law firms per month.</strong>{" "}
-              <a
-                href="#contact"
-                className="underline underline-offset-2 hover:opacity-80 transition-opacity ml-1"
-              >
-                Book your strategy call →
-              </a>
-            </span>
-          </div>
-          <button
-            onClick={dismiss}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 opacity-70 hover:opacity-100 transition-opacity rounded"
-            aria-label="Dismiss announcement"
+    <Banner
+      id="tbc-limited-spots"
+      variant="rainbow"
+      height="3rem"
+      className="bg-announcement shadow-[0_2px_16px_-4px_rgba(120,30,10,0.55)] border-b border-warm-white/15"
+      rainbowColors={[
+        "rgba(255,255,255,0.38)",
+        "rgba(255,225,195,0.32)",
+        "transparent",
+        "rgba(255,255,255,0.28)",
+        "transparent",
+        "rgba(255,210,175,0.3)",
+        "transparent",
+      ]}
+    >
+      <span className="inline-flex items-center gap-2.5 px-6 text-sm sm:text-base font-sans font-medium text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+        <span
+          aria-hidden
+          className="h-1.5 w-1.5 shrink-0 rounded-full bg-white animate-pulse"
+        />
+        <span>
+          Limited Spots — We only take on{" "}
+          <strong className="font-semibold">
+            3 new law firms per month.
+          </strong>{" "}
+          <a
+            href="#contact"
+            className="underline underline-offset-4 decoration-white/70 hover:decoration-white transition ml-1"
           >
-            <X size={13} />
-          </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
+            Book your strategy call →
+          </a>
+        </span>
+      </span>
+    </Banner>
   );
 }

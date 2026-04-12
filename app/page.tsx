@@ -25,8 +25,8 @@ export default function Home() {
       </div>
       <main>
         <HeroSection />
-        <MarqueeSection />
         <ProblemSection />
+        <MarqueeSection />
         <AuthorityStack />
         <Results />
         <Stats />

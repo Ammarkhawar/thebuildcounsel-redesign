@@ -95,12 +95,71 @@
   .card-dark {
     @apply bg-dark-2 border border-gold/10 rounded-2xl overflow-hidden;
   }
+
+  .bg-announcement {
+    position: relative;
+    background-image: linear-gradient(
+      110deg,
+      #4a1609 0%,
+      #7e2713 20%,
+      #c0401c 50%,
+      #7e2713 80%,
+      #4a1609 100%
+    );
+    background-size: 240% 100%;
+    animation: tbcBannerShift 9s ease-in-out infinite;
+  }
+
+  .bg-announcement::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      100deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.18) 46%,
+      rgba(255, 230, 200, 0.55) 50%,
+      rgba(255, 255, 255, 0.18) 54%,
+      transparent 65%
+    );
+    background-size: 250% 100%;
+    background-repeat: no-repeat;
+    animation: tbcBannerSweep 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
 }
 
-/* Respect reduced-motion — pause all marquee animations */
+@keyframes tbcBannerShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%     { background-position: 100% 50%; }
+}
+
+@keyframes tbcBannerSweep {
+  0%   { background-position: 150% 0; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { background-position: -50% 0; opacity: 0; }
+}
+
+@keyframes tbcTapeSway {
+  0%, 100% { transform: rotate(0deg) translateY(0); filter: brightness(1); }
+  50%      { transform: rotate(1.2deg) translateY(-3px); filter: brightness(1.08); }
+}
+
+.tape-sway {
+  transform-origin: center;
+  animation: tbcTapeSway 5s ease-in-out infinite;
+}
+
+/* Respect reduced-motion — pause all looping animations */
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-marquee-reverse {
+  .animate-marquee-reverse,
+  .bg-announcement,
+  .bg-announcement::before,
+  .tape-sway {
     animation-play-state: paused;
   }
 }
