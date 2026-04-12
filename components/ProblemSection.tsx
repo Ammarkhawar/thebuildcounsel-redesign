@@ -33,7 +33,7 @@ export default function ProblemSection() {
     <section
       id="problem"
       ref={ref}
-      className="relative section-pad pb-8 md:pb-12 bg-dark"
+      className="relative section-pad pb-4 md:pb-12 bg-dark"
     >
       {/* Subtle radial glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -205,8 +205,9 @@ export default function ProblemSection() {
                 alt="Law firm digital marketing visibility across Google, AI search, and social platforms"
                 width={659}
                 height={1609}
-                className="w-full h-auto"
+                className="w-full h-auto [image-rendering:auto]"
                 priority={false}
+                unoptimized
               />
               {/* Glow behind image */}
               <div className="absolute -inset-4 bg-gold/5 rounded-2xl blur-2xl -z-10" />
