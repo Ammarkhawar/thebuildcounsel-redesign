@@ -1,15 +1,15 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useInView, type Variants } from "framer-motion";
+import { Quote } from "lucide-react";
 
-const painPoints = [
-  { icon: "◎", label: "Invisible on Google" },
-  { icon: "↑", label: "Skyrocketing ad spend" },
-  { icon: "⚡", label: "Competitors outranking you" },
-  { icon: "✕", label: "No consistent inbound cases" },
-  { icon: "✦", label: "Broken agency promises" },
-  { icon: "◈", label: "Missed AI search results" },
+const bulletPoints = [
+  "Maximizing your visibility across Google and AI search platforms (ChatGPT, Perplexity, etc)",
+  "Reducing your cost per client with a smarter Google Ads strategy.",
+  "Running social ad campaigns that bring in qualified leads while building brand reach.",
+  "Increasing both the volume and quality of leads your firm receives.",
 ];
 
 const fadeUp: Variants = {
@@ -17,7 +17,11 @@ const fadeUp: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+    transition: {
+      duration: 0.6,
+      delay: i * 0.12,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
   }),
 };
 
@@ -36,117 +40,179 @@ export default function ProblemSection() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gold/4 rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative max-w-site">
-        {/* Label */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex justify-center mb-6"
-        >
-          <span className="label-tag">
-            <span className="w-1.5 h-1.5 bg-gold rounded-full" />
-            The Real Problem
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h2
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="heading-lg text-center text-warm-white max-w-3xl mx-auto mb-16"
-        >
-          Are you struggling to get enough{" "}
-          <span className="text-gradient font-semibold italic">
-            High-Quality Leads
-          </span>{" "}
-          for your law practice?
-        </motion.h2>
-
-        {/* Pain point badges */}
-        <motion.div
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex flex-wrap justify-center gap-3 mb-20"
-        >
-          {painPoints.map((point, i) => (
+      <div className="relative max-w-site mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left — Text content */}
+          <div>
+            {/* Label */}
             <motion.div
-              key={point.label}
-              custom={i + 3}
+              custom={0}
               variants={fadeUp}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              className="flex items-center gap-2 border border-gold/20 bg-gold/5 rounded-full px-4 py-2 hover:border-gold/40 hover:bg-gold/8 transition-all duration-300"
+              className="flex mb-6"
             >
-              <span className="text-gold text-xs">{point.icon}</span>
-              <span className="text-sm font-sans text-warm-white/80 font-medium">
-                {point.label}
+              <span className="label-tag">
+                <span className="w-1.5 h-1.5 bg-gold rounded-full" />
+                The Real Problem
               </span>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Founder quote */}
-        <motion.div
-          custom={9}
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="relative max-w-4xl mx-auto"
-        >
-          {/* Quote card */}
-          <div className="relative bg-dark-2 border border-gold/15 rounded-2xl p-8 md:p-12">
-            {/* Large decorative quote mark */}
-            <div
-              aria-hidden="true"
-              className="absolute -top-5 left-8 md:left-12 font-serif text-7xl text-gold/20 leading-none select-none"
+            {/* Headline */}
+            <motion.h2
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              className="heading-lg text-warm-white mb-8"
             >
-              "
-            </div>
+              Are you struggling to get enough{" "}
+              <span className="text-gradient font-semibold italic">
+                High-Quality Leads
+              </span>{" "}
+              for Your Law Practice?
+            </motion.h2>
 
-            <div className="flex flex-col md:flex-row gap-8 items-start">
-              {/* Avatar */}
-              <div className="shrink-0">
-                <div className="w-14 h-14 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center">
-                  <span className="font-serif text-gold text-xl font-semibold">AK</span>
-                </div>
-              </div>
+            {/* Body paragraphs */}
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              className="space-y-5 mb-8"
+            >
+              <p className="font-sans text-base text-warm-white/70 leading-relaxed">
+                The internet is crowded. Your potential clients are searching on
+                Google, AI platforms like ChatGPT, and across social media. If you
+                rely on just one channel, you limit your growth.
+              </p>
+              <p className="font-sans text-base text-warm-white/70 leading-relaxed">
+                But you already know that. Chances are you&apos;ve hired an
+                &ldquo;SEO expert&rdquo; or a PPC agency, spent thousands, and got
+                little more than empty promises and mediocre results.
+              </p>
+              <p className="font-sans text-base text-warm-white/70 leading-relaxed">
+                You&apos;re here because you want real growth. You likely need help
+                with one (or more) of the following:
+              </p>
+            </motion.div>
 
-              {/* Quote text */}
-              <div className="flex-1">
-                <blockquote className="font-serif text-xl md:text-2xl lg:text-3xl font-light text-warm-white leading-[1.4] mb-6">
-                  Your law firm isn't struggling for clients — it's struggling with{" "}
-                  <span className="italic text-gold">
-                    outdated, one-channel strategies
+            {/* Bullet points */}
+            <motion.ul
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              className="space-y-3 mb-8"
+            >
+              {bulletPoints.map((point, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="mt-1.5 w-2 h-2 shrink-0 rounded-full bg-gold" />
+                  <span className="font-sans text-base text-warm-white/80 leading-relaxed">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </motion.ul>
+
+            {/* Founder quote card */}
+            <motion.figure
+              custom={4}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+              className="relative overflow-hidden rounded-2xl border border-gold/15 bg-warm-white/[0.025] p-6 md:p-8 mb-8"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-16 -left-16 w-40 h-40 bg-gold/10 blur-3xl rounded-full"
+              />
+
+              <Quote
+                aria-hidden
+                className="w-7 h-7 text-gold/70 mb-4"
+                strokeWidth={1.5}
+              />
+
+              <blockquote className="relative space-y-4">
+                <p className="font-serif text-xl md:text-2xl text-warm-white font-medium italic leading-snug">
+                  Your law firm doesn&apos;t have a lead problem –{" "}
+                  <span className="text-gradient not-italic">
+                    it has a visibility problem.
+                  </span>
+                </p>
+                <p className="font-sans text-base text-warm-white/75 leading-relaxed">
+                  Today&apos;s prospects don&apos;t search in one place. They
+                  check Google, AI tools, maps, and social platforms before
+                  making a decision.
+                </p>
+                <p className="font-sans text-base text-warm-white/75 leading-relaxed">
+                  If your firm isn&apos;t showing up everywhere that matters,
+                  you&apos;re losing cases to firms that are.
+                </p>
+                <p className="font-sans text-base text-warm-white/75 leading-relaxed">
+                  That&apos;s why we built{" "}
+                  <span className="font-semibold text-warm-white">
+                    The Authority Stack&trade;
                   </span>{" "}
-                  from agencies who focus on fluffy outcomes. Today's prospects see ads, maps,
-                  organic listings, AI results, and social all at once. To win, you need to be{" "}
-                  <span className="italic">everywhere.</span>
-                </blockquote>
+                  – a system designed to position your firm across all search
+                  and social to drive signed cases, not clicks.
+                </p>
+              </blockquote>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-px bg-gold/40" />
-                  <div>
-                    <p className="font-sans text-sm font-medium text-warm-white">
-                      Ammar Khawar
-                    </p>
-                    <p className="font-sans text-xs text-muted">
-                      Founder, The Build Counsel
-                    </p>
-                  </div>
+              <figcaption className="mt-6 pt-5 border-t border-gold/10 flex items-center gap-3">
+                <span className="h-px w-8 bg-gold/50" aria-hidden />
+                <div className="flex flex-col leading-tight">
+                  <span className="font-serif italic text-lg text-warm-white">
+                    Ammar Khawar
+                  </span>
+                  <span className="font-sans text-[11px] uppercase tracking-[0.14em] text-warm-white/55">
+                    Founder,{" "}
+                    <span className="text-gold">The Build Counsel</span>
+                  </span>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </motion.figure>
 
-            {/* Corner accent */}
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gold/3 rounded-br-2xl blur-2xl pointer-events-none" />
+            {/* CTA Button */}
+            <motion.div
+              custom={6}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+            >
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-warm-white font-sans font-semibold text-sm tracking-wide uppercase px-8 py-4 rounded-lg transition-colors duration-300"
+              >
+                Get your free strategy call
+                <span aria-hidden="true">→</span>
+              </a>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Right — Image */}
+          <motion.div
+            custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            className="relative flex justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-lg">
+              <Image
+                src="/graphic.svg"
+                alt="Law firm digital marketing visibility across Google, AI search, and social platforms"
+                width={659}
+                height={1609}
+                className="w-full h-auto"
+                priority={false}
+              />
+              {/* Glow behind image */}
+              <div className="absolute -inset-4 bg-gold/5 rounded-2xl blur-2xl -z-10" />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
