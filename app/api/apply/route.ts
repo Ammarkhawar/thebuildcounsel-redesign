@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { Client } from "@notionhq/client";
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const notion = new Client({ auth: process.env.NOTION_TOKEN });
   try {
     const body = await req.json();
     const { firmName, practiceArea, budget, services, challenge, email } = body;
@@ -56,34 +54,6 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
       `,
-    });
-
-    // ── Log to Notion ──────────────────────────────────────────────────────
-    await notion.pages.create({
-      parent: { database_id: process.env.NOTION_DATABASE_ID! },
-      properties: {
-        "Firm Name": {
-          title: [{ text: { content: firmName } }],
-        },
-        "Email": {
-          email: email,
-        },
-        "Practice Area": {
-          select: { name: practiceArea },
-        },
-        "Monthly Budget": {
-          select: { name: budget },
-        },
-        "Services": {
-          multi_select: services.map((s: string) => ({ name: s })),
-        },
-        "Challenge": {
-          rich_text: [{ text: { content: challenge } }],
-        },
-        "Status": {
-          select: { name: "New" },
-        },
-      },
     });
 
     return NextResponse.json({ success: true });
