@@ -22,6 +22,15 @@ const budgetRanges = [
   "$10,000+ / month",
 ];
 
+const serviceOptions = [
+  "Search Authority (SEO)",
+  "Google Ads / Local Service Ads",
+  "Facebook & Instagram Ads",
+  "Website Design & Conversion",
+  "Content Production",
+  "Reputation Management",
+];
+
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function ApplicationForm() {
@@ -32,6 +41,7 @@ export default function ApplicationForm() {
     firmName: "",
     practiceArea: "",
     budget: "",
+    services: [] as string[],
     challenge: "",
     email: "",
   });
@@ -41,6 +51,15 @@ export default function ApplicationForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  function handleServiceToggle(service: string) {
+    setForm((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -55,6 +74,7 @@ export default function ApplicationForm() {
     form.firmName.trim() &&
     form.practiceArea &&
     form.budget &&
+    form.services.length > 0 &&
     form.challenge.trim() &&
     form.email.trim();
 
@@ -188,7 +208,49 @@ export default function ApplicationForm() {
                     </Field>
                   </div>
 
-                  {/* Row 3: Challenge */}
+                  {/* Row 3: Services */}
+                  <Field label="Services you're interested in" required>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-0.5">
+                      {serviceOptions.map((service) => {
+                        const checked = form.services.includes(service);
+                        return (
+                          <button
+                            key={service}
+                            type="button"
+                            onClick={() => handleServiceToggle(service)}
+                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border text-left text-sm font-sans transition-all duration-200 ${
+                              checked
+                                ? "border-gold/50 bg-gold/8 text-warm-white"
+                                : "border-gold/10 bg-dark-3 text-muted hover:border-gold/25 hover:text-warm-white"
+                            }`}
+                          >
+                            <span
+                              className={`w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-all duration-200 ${
+                                checked
+                                  ? "bg-gold border-gold"
+                                  : "border-gold/25 bg-transparent"
+                              }`}
+                            >
+                              {checked && (
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                                  <path
+                                    d="M1.5 4.5L3.5 6.5L7.5 2.5"
+                                    stroke="white"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              )}
+                            </span>
+                            {service}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </Field>
+
+                  {/* Row 4: Challenge */}
                   <Field
                     label="What's your biggest growth challenge right now?"
                     required
@@ -204,7 +266,7 @@ export default function ApplicationForm() {
                     />
                   </Field>
 
-                  {/* Row 4: Email */}
+                  {/* Row 5: Email */}
                   <Field label="Your Email" required>
                     <input
                       type="email"
