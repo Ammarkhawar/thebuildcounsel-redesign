@@ -65,9 +65,17 @@ export default function ApplicationForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setFormState("submitting");
-    // Simulate async submission — swap with real endpoint when ready
-    await new Promise((r) => setTimeout(r, 1200));
-    setFormState("success");
+    try {
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setFormState("success");
+    } catch {
+      setFormState("error");
+    }
   }
 
   const isValid =
@@ -313,6 +321,12 @@ export default function ApplicationForm() {
                       )}
                     </button>
                   </div>
+
+                  {formState === "error" && (
+                    <p className="text-center text-xs text-red-400 font-sans">
+                      Something went wrong. Please try again or email us directly at info@thebuildcounsel.com
+                    </p>
+                  )}
 
                   <p className="text-center text-[11px] text-muted/60 font-sans">
                     No commitment. We reach out only if it&apos;s a genuine fit.
