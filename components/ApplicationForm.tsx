@@ -1,0 +1,342 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+
+const practiceAreas = [
+  "Personal Injury",
+  "Criminal Defense",
+  "Family Law / Divorce",
+  "Immigration Law",
+  "Business / Commercial",
+  "Tax & Bankruptcy",
+  "Estate Planning",
+  "Employment Law",
+  "Other",
+];
+
+const budgetRanges = [
+  "Under $2,000 / month",
+  "$2,000 – $5,000 / month",
+  "$5,000 – $10,000 / month",
+  "$10,000+ / month",
+];
+
+type FormState = "idle" | "submitting" | "success" | "error";
+
+export default function ApplicationForm() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const [form, setForm] = useState({
+    firmName: "",
+    practiceArea: "",
+    budget: "",
+    challenge: "",
+    email: "",
+  });
+  const [formState, setFormState] = useState<FormState>("idle");
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setFormState("submitting");
+    // Simulate async submission — swap with real endpoint when ready
+    await new Promise((r) => setTimeout(r, 1200));
+    setFormState("success");
+  }
+
+  const isValid =
+    form.firmName.trim() &&
+    form.practiceArea &&
+    form.budget &&
+    form.challenge.trim() &&
+    form.email.trim();
+
+  return (
+    <section
+      id="apply"
+      ref={ref}
+      className="section-pad relative overflow-hidden bg-dark"
+    >
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gold/4 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-site relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="label-tag mb-5 mx-auto">Limited Spots Available</div>
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-warm-white font-light leading-[1.05] tracking-tight mb-4">
+            Apply to Work{" "}
+            <span className="text-gradient font-semibold italic">With Us</span>
+          </h2>
+          <p className="body-lg max-w-xl mx-auto">
+            We review every application personally. If it&apos;s a fit, you&apos;ll hear
+            from us within one business day.
+          </p>
+        </motion.div>
+
+        {/* Form card */}
+        <motion.div
+          className="max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="bg-dark-2 border border-gold/10 rounded-2xl p-8 md:p-10">
+            <AnimatePresence mode="wait">
+              {formState === "success" ? (
+                <motion.div
+                  key="success"
+                  className="flex flex-col items-center text-center py-8"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {/* Checkmark */}
+                  <div className="w-14 h-14 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center mb-6">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M5 12L10 17L19 7"
+                        stroke="#C8411C"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="font-serif text-2xl text-warm-white font-light mb-3">
+                    Application Received
+                  </h3>
+                  <p className="text-sm text-muted leading-relaxed max-w-sm">
+                    We review applications within 1 business day. If it&apos;s a fit,
+                    you&apos;ll hear from us directly at{" "}
+                    <span className="text-warm-white">{form.email}</span>.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  className="space-y-5"
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {/* Row 1: Firm name */}
+                  <Field label="Firm Name" required>
+                    <input
+                      type="text"
+                      name="firmName"
+                      value={form.firmName}
+                      onChange={handleChange}
+                      placeholder="e.g. Johnson & Associates"
+                      required
+                      className="form-input"
+                    />
+                  </Field>
+
+                  {/* Row 2: Practice area + budget */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <Field label="Primary Practice Area" required>
+                      <select
+                        name="practiceArea"
+                        value={form.practiceArea}
+                        onChange={handleChange}
+                        required
+                        className="form-input"
+                      >
+                        <option value="" disabled>
+                          Select area
+                        </option>
+                        {practiceAreas.map((a) => (
+                          <option key={a} value={a}>
+                            {a}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+
+                    <Field label="Monthly Marketing Budget" required>
+                      <select
+                        name="budget"
+                        value={form.budget}
+                        onChange={handleChange}
+                        required
+                        className="form-input"
+                      >
+                        <option value="" disabled>
+                          Select range
+                        </option>
+                        {budgetRanges.map((b) => (
+                          <option key={b} value={b}>
+                            {b}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                  </div>
+
+                  {/* Row 3: Challenge */}
+                  <Field
+                    label="What's your biggest growth challenge right now?"
+                    required
+                  >
+                    <textarea
+                      name="challenge"
+                      value={form.challenge}
+                      onChange={handleChange}
+                      placeholder="e.g. We're getting traffic but not converting it into consultations..."
+                      required
+                      rows={3}
+                      className="form-input resize-none"
+                    />
+                  </Field>
+
+                  {/* Row 4: Email */}
+                  <Field label="Your Email" required>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="you@yourfirm.com"
+                      required
+                      className="form-input"
+                    />
+                  </Field>
+
+                  {/* Submit */}
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={!isValid || formState === "submitting"}
+                      className="btn-primary w-full justify-center py-4 text-sm disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      {formState === "submitting" ? (
+                        <>
+                          <Spinner />
+                          Submitting…
+                        </>
+                      ) : (
+                        <>
+                          Submit My Application
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"
+                            aria-hidden="true"
+                          >
+                            <path
+                              d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  <p className="text-center text-[11px] text-muted/60 font-sans">
+                    No commitment. We reach out only if it&apos;s a genuine fit.
+                  </p>
+                </motion.form>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Trust row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-muted font-sans">
+            {[
+              "Law firms only",
+              "Response within 1 business day",
+              "No spam, ever",
+            ].map((text, i) => (
+              <span key={text} className="flex items-center gap-2">
+                {i > 0 && (
+                  <span
+                    className="hidden sm:block w-px h-3 bg-gold/20"
+                    aria-hidden="true"
+                  />
+                )}
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path
+                    d="M2 6L5 9L10 3"
+                    stroke="#C8411C"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {text}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="text-xs font-sans font-medium text-muted tracking-wide">
+        {label}
+        {required && <span className="text-gold ml-0.5">*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+function Spinner() {
+  return (
+    <svg
+      className="animate-spin"
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="7"
+        cy="7"
+        r="5.5"
+        stroke="currentColor"
+        strokeOpacity="0.3"
+        strokeWidth="1.5"
+      />
+      <path
+        d="M7 1.5A5.5 5.5 0 0 1 12.5 7"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

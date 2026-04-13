@@ -13,6 +13,7 @@ import Process from "@/components/Process";
 import PracticeAreas from "@/components/PracticeAreas";
 import Pricing from "@/components/Pricing";
 import CTASection from "@/components/CTASection";
+import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
         <PracticeAreas />
         <Pricing />
         <CTASection />
+        <ApplicationForm />
       </main>
       <Footer />
     </>
