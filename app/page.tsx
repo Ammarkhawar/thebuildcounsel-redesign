@@ -14,7 +14,7 @@ import PracticeAreas from "@/components/PracticeAreas";
 import Pricing from "@/components/Pricing";
 import CTASection from "@/components/CTASection";
 import ApplicationForm from "@/components/ApplicationForm";
-import Footer from "@/components/Footer";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 
 export default function Home() {
   return (
@@ -37,7 +37,7 @@ export default function Home() {
         <CTASection />
         <ApplicationForm />
       </main>
-      <Footer />
+      <CinematicFooter />
     </>
   );
 }
