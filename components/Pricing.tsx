@@ -148,15 +148,12 @@ export default function Pricing() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-5">
+              <div className="flex mb-5">
                 <MagneticButton as="a" href="#contact" className="btn-primary flex-1 justify-center text-sm py-3.5">
                   Book a Strategy Call
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </MagneticButton>
-                <MagneticButton as="a" href="#process" className="btn-ghost flex-1 justify-center text-sm py-3.5">
-                  See How It Works
                 </MagneticButton>
               </div>
 

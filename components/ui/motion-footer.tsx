@@ -208,91 +208,51 @@ export function CinematicFooter() {
             </p>
 
             <div ref={linksRef} className="flex flex-col items-center gap-5 w-full">
-              {/* Primary CTAs */}
-              <div className="flex flex-wrap justify-center gap-4">
+              {/* Primary CTA */}
+              <div className="flex justify-center">
                 <MagneticButton
                   as="a"
                   href="https://calendly.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="tbc-glass-pill px-9 py-4 rounded-full font-semibold text-sm flex items-center gap-3 group"
-                  style={{ color: "#f5f2f0" }}
+                  className="btn-primary px-10 py-4 text-base flex items-center gap-3 group"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#C8411C" }}>
-                    <rect x="1" y="3" width="14" height="12" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M5 1v4M11 1v4M1 7h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
                   Book Your Strategy Call
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300">
-                    <path d="M2 11L11 2M11 2H5M11 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-300">
+                    <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </MagneticButton>
-
-                <MagneticButton
-                  as="a"
-                  href="#apply"
-                  className="tbc-glass-pill px-9 py-4 rounded-full font-semibold text-sm flex items-center gap-3 group"
-                  style={{ color: "#8a8784" }}
-                >
-                  Apply Now
-                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-300">
-                    <path d="M2 11L11 2M11 2H5M11 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </MagneticButton>
-              </div>
-
-              {/* Nav links */}
-              <div className="flex flex-wrap justify-center gap-3 mt-1">
-                {[
-                  { label: "Our Process", href: "#process" },
-                  { label: "Results",     href: "#results" },
-                  { label: "Pricing",     href: "#pricing" },
-                  { label: "Privacy Policy", href: "#" },
-                  { label: "Terms",       href: "#" },
-                ].map((link) => (
-                  <MagneticButton
-                    key={link.label}
-                    as="a"
-                    href={link.href}
-                    className="tbc-glass-pill px-5 py-2.5 rounded-full text-[11px] font-medium tracking-wide hover:text-[#f5f2f0] transition-colors duration-200"
-                    style={{ color: "#8a8784" }}
-                  >
-                    {link.label}
-                  </MagneticButton>
-                ))}
               </div>
 
               {/* Contact info */}
               <div className="flex flex-wrap justify-center gap-4 mt-3">
                 <a
                   href="mailto:info@thebuildcounsel.com"
-                  className="tbc-glass-pill flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300"
-                  style={{ color: "#f5f2f0" }}
+                  className="flex items-center gap-2.5 bg-dark-3 border border-gold/20 rounded-xl px-5 py-3 text-sm font-medium text-warm-white hover:border-gold/40 hover:bg-dark-4 transition-all duration-200"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#C8411C" }}>
-                    <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M1 5.5L8 10L15 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="text-gold shrink-0">
+                    <rect x="1" y="2.5" width="13" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
+                    <path d="M1 5L7.5 9L14 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                   </svg>
-                  <span className="text-base font-medium tracking-wide">info@thebuildcounsel.com</span>
+                  info@thebuildcounsel.com
                 </a>
                 <a
                   href="tel:+13658055602"
-                  className="tbc-glass-pill flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300"
-                  style={{ color: "#f5f2f0" }}
+                  className="flex items-center gap-2.5 bg-dark-3 border border-gold/20 rounded-xl px-5 py-3 text-sm font-medium text-warm-white hover:border-gold/40 hover:bg-dark-4 transition-all duration-200"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#C8411C" }}>
-                    <path d="M2.5 3C2.5 2.4 3 2 3.5 2H5.5L7 5.5L5 6.5C5.7 8 7.5 9.8 9 10.5L10 8.5L13.5 10V12C13.5 12.6 13 13 12.5 13C6 13 2.5 6.5 2.5 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="text-gold shrink-0">
+                    <path d="M2.5 3C2.5 2.4 3 2 3.5 2H5.5L7 5.5L5 6.5C5.7 8 7.5 9.8 9 10.5L10 8.5L13.5 10V12C13.5 12.6 13 13 12.5 13C6 13 2.5 6.5 2.5 3z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
                   </svg>
-                  <span className="text-base font-medium tracking-wide">+1 (365) 805-5602</span>
+                  +1 (365) 805-5602
                 </a>
               </div>
             </div>
           </div>
 
           {/* Bottom bar */}
-          <div className="relative z-20 w-full pb-7 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="relative z-20 w-full pb-7 px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 items-center gap-4">
             {/* Logo + copyright */}
-            <div className="flex items-center gap-3 order-2 md:order-1">
+            <div className="flex items-center gap-3 justify-center md:justify-start">
               <Image src="/logo.svg" alt="The Build Counsel" width={80} height={32} className="h-6 w-auto opacity-60" />
               <span className="text-[10px] font-medium tracking-widest uppercase" style={{ color: "#8a8784" }}>
                 © {new Date().getFullYear()} The Build Counsel
@@ -301,7 +261,7 @@ export function CinematicFooter() {
 
             {/* "Law Firms Only" badge */}
             <div
-              className="tbc-glass-pill px-6 py-2.5 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default"
+              className="tbc-glass-pill px-6 py-2.5 rounded-full flex items-center gap-2 justify-self-center mx-auto cursor-default"
             >
               <span className="tbc-heartbeat text-sm" style={{ color: "#C8411C" }}>✦</span>
               <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#8a8784" }}>
@@ -313,7 +273,7 @@ export function CinematicFooter() {
             <MagneticButton
               as="button"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="w-11 h-11 rounded-full tbc-glass-pill flex items-center justify-center group order-3"
+              className="w-11 h-11 rounded-full tbc-glass-pill flex items-center justify-center group justify-self-end ml-auto"
               style={{ color: "#8a8784" }}
             >
               <svg className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
