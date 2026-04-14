@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 const practiceAreas = [
   "Personal Injury",
@@ -237,7 +238,7 @@ export default function ApplicationForm() {
                   </Field>
 
                   <div className="pt-2">
-                    <button
+                    <MagneticButton
                       type="submit"
                       disabled={!isValid || formState === "submitting"}
                       className="btn-primary w-full justify-center py-4 text-sm disabled:opacity-40 disabled:cursor-not-allowed"
@@ -252,7 +253,7 @@ export default function ApplicationForm() {
                           </svg>
                         </>
                       )}
-                    </button>
+                    </MagneticButton>
                   </div>
 
                   {formState === "error" && (

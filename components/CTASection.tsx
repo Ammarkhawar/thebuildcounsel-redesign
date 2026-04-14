@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 const rotatingWords = ["Dominate", "Own", "Lead", "Win"];
 
@@ -62,7 +63,8 @@ export default function CTASection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <a
+            <MagneticButton
+              as="a"
               href="https://calendly.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -73,13 +75,14 @@ export default function CTASection() {
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href="mailto:hello@thebuildcounsel.com"
               className="btn-ghost text-base py-4 px-8"
             >
               Send Us a Message
-            </a>
+            </MagneticButton>
           </div>
 
           {/* Trust signals */}

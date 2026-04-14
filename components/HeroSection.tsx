@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import Image from "next/image";
 
 const rotatingWords = ["Dominate", "Own", "Lead", "Win"];
@@ -383,15 +384,15 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="#contact" className="btn-primary text-sm py-3 px-6">
+            <MagneticButton as="a" href="#contact" className="btn-primary text-sm py-3 px-6">
               Book a Strategy Call
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-            <a href="#services" className="btn-ghost text-sm py-3 px-6">
+            </MagneticButton>
+            <MagneticButton as="a" href="#services" className="btn-ghost text-sm py-3 px-6">
               See the Authority Stack™
-            </a>
+            </MagneticButton>
           </div>
         </motion.div>
       </div>

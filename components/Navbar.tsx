@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import Image from "next/image";
 
 const links = [
@@ -108,12 +109,12 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="#contact" className="btn-primary text-sm" aria-label="Book a strategy call">
+          <MagneticButton as="a" href="#contact" className="btn-primary text-sm" aria-label="Book a strategy call">
             Book Strategy Call
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </a>
+          </MagneticButton>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -160,7 +161,8 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="pt-3 mt-2 border-t border-gold/10">
-                <a
+                <MagneticButton
+                  as="a"
                   href="#contact"
                   className="btn-primary w-full justify-center"
                   onClick={() => setMenuOpen(false)}
@@ -169,7 +171,7 @@ export default function Navbar() {
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </a>
+                </MagneticButton>
               </div>
             </nav>
           </motion.div>
