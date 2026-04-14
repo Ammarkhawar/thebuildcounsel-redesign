@@ -261,6 +261,31 @@ export function CinematicFooter() {
                   </MagneticButton>
                 ))}
               </div>
+
+              {/* Contact info */}
+              <div className="flex flex-wrap justify-center gap-4 mt-3">
+                <a
+                  href="mailto:info@thebuildcounsel.com"
+                  className="tbc-glass-pill flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300"
+                  style={{ color: "#f5f2f0" }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#C8411C" }}>
+                    <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M1 5.5L8 10L15 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                  <span className="text-base font-medium tracking-wide">info@thebuildcounsel.com</span>
+                </a>
+                <a
+                  href="tel:+13658055602"
+                  className="tbc-glass-pill flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300"
+                  style={{ color: "#f5f2f0" }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ color: "#C8411C" }}>
+                    <path d="M2.5 3C2.5 2.4 3 2 3.5 2H5.5L7 5.5L5 6.5C5.7 8 7.5 9.8 9 10.5L10 8.5L13.5 10V12C13.5 12.6 13 13 12.5 13C6 13 2.5 6.5 2.5 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                  </svg>
+                  <span className="text-base font-medium tracking-wide">+1 (365) 805-5602</span>
+                </a>
+              </div>
             </div>
           </div>
 

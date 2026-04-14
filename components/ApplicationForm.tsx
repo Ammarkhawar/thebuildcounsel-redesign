@@ -258,7 +258,10 @@ export default function ApplicationForm() {
 
                   {formState === "error" && (
                     <p className="text-center text-xs text-red-400 font-sans">
-                      Something went wrong. Please try again or email us directly at info@thebuildcounsel.com
+                      Something went wrong. Please try again or reach us at{" "}
+                      <a href="mailto:info@thebuildcounsel.com" className="underline">info@thebuildcounsel.com</a>
+                      {" "}or{" "}
+                      <a href="tel:+13658055602" className="underline">+1 (365) 805-5602</a>
                     </p>
                   )}
 
@@ -281,6 +284,29 @@ export default function ApplicationForm() {
                 {text}
               </span>
             ))}
+          </div>
+
+          {/* Contact info */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
+            <a
+              href="mailto:info@thebuildcounsel.com"
+              className="flex items-center gap-2.5 bg-dark-3 border border-gold/20 rounded-xl px-5 py-3 text-sm font-medium text-warm-white hover:border-gold/40 hover:bg-dark-4 transition-all duration-200 font-sans"
+            >
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" className="text-gold shrink-0">
+                <rect x="1" y="2.5" width="13" height="10" rx="2" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M1 5L7.5 9L14 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              info@thebuildcounsel.com
+            </a>
+            <a
+              href="tel:+13658055602"
+              className="flex items-center gap-2.5 bg-dark-3 border border-gold/20 rounded-xl px-5 py-3 text-sm font-medium text-warm-white hover:border-gold/40 hover:bg-dark-4 transition-all duration-200 font-sans"
+            >
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true" className="text-gold shrink-0">
+                <path d="M2.5 3C2.5 2.4 3 2 3.5 2H5.5L7 5.5L5 6.5C5.7 8 7.5 9.8 9 10.5L10 8.5L13.5 10V12C13.5 12.6 13 13 12.5 13C6 13 2.5 6.5 2.5 3z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
+              </svg>
+              +1 (365) 805-5602
+            </a>
           </div>
         </motion.div>
       </div>
