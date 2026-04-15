@@ -26,9 +26,8 @@ export default function AnnouncementBar() {
         />
         <span>
           Limited Spots — We only take on{" "}
-          <strong className="font-semibold">
-            3 new law firms per month.
-          </strong>{" "}
+          <strong className="font-semibold">3 new firms per month</strong>{" "}
+          for our law firm SEO and marketing program.{" "}
           <a
             href="#contact"
             className="underline underline-offset-4 decoration-white/70 hover:decoration-white transition ml-1"
