@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 const pillars = [
   {
@@ -15,6 +16,7 @@ const pillars = [
     accent: "#3b82f6",
     metric: "+980%",
     metricLabel: "organic growth",
+    image: "/service-search.png",
   },
   {
     num: "02",
@@ -27,6 +29,7 @@ const pillars = [
     accent: "#C8411C",
     metric: "6.2×",
     metricLabel: "lead multiplier",
+    image: "/service-paid.png",
   },
   {
     num: "03",
@@ -39,6 +42,7 @@ const pillars = [
     accent: "#a855f7",
     metric: "+41%",
     metricLabel: "brand lift",
+    image: "/service-social.png",
   },
   {
     num: "04",
@@ -51,6 +55,7 @@ const pillars = [
     accent: "#10b981",
     metric: "38%",
     metricLabel: "conv. lift",
+    image: "/service-conversion.png",
   },
 ];
 
@@ -78,95 +83,105 @@ export default function AuthorityStack() {
           </p>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Anchor Card — spans 2 cols */}
-          <motion.div
-            className="md:col-span-2 lg:col-span-2 bg-dark-2 border border-gold/15 rounded-2xl p-8 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/8 via-transparent to-transparent" />
-            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-gold/5 rounded-full blur-3xl group-hover:bg-gold/8 transition-all duration-700" />
+        {/* Anchor Banner — full width horizontal */}
+        <motion.div
+          className="bg-dark-2 border border-gold/15 rounded-2xl px-8 py-7 relative overflow-hidden group mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-gold/8 via-transparent to-transparent" />
+          <div className="absolute -top-10 -right-10 w-64 h-64 bg-gold/5 rounded-full blur-3xl group-hover:bg-gold/8 transition-all duration-700" />
 
-            <div className="relative z-10">
-              <div className="w-12 h-12 bg-gold/15 border border-gold/30 rounded-xl flex items-center justify-center mb-6">
-                <span className="text-gold font-serif text-xl">✦</span>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+            {/* Left: icon + heading */}
+            <div className="flex items-center gap-5 shrink-0">
+              <div className="w-11 h-11 bg-gold/15 border border-gold/30 rounded-xl flex items-center justify-center shrink-0">
+                <span className="text-gold font-serif text-lg">✦</span>
               </div>
-
-              <div className="label-tag mb-4 text-[10px]">Multi-Channel System</div>
-
-              <h3 className="font-serif text-3xl md:text-4xl text-warm-white font-light leading-tight mb-4">
-                One System.<br />
-                <span className="text-gold font-semibold italic">Every Channel.</span><br />
-                Infinite Authority.
-              </h3>
-
-              <p className="text-muted text-sm leading-relaxed mb-8 max-w-sm">
-                Most agencies pick a lane. We built the highway. The Authority Stack™ coordinates
-                all four growth channels into a single, compounding client acquisition machine.
-              </p>
-
-              {/* Pillar indicators with metrics */}
-              <div className="grid grid-cols-2 gap-3">
-                {pillars.map((p) => (
-                  <div key={p.num} className="flex items-center gap-2.5 bg-dark-3 rounded-lg px-3 py-2.5 group-hover:bg-dark-4 transition-colors duration-300">
-                    <span className="text-base shrink-0" style={{ color: p.accent }}>{p.icon}</span>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[10px] text-muted font-sans">{p.num}</div>
-                      <div className="text-xs text-warm-white font-sans font-medium truncate">{p.title}</div>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <div className="text-[11px] font-serif font-semibold" style={{ color: p.accent }}>{p.metric}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-gold/10 flex items-center justify-between">
-                <span className="text-xs text-muted font-sans">All channels. One team. Zero silos.</span>
-                <a href="#contact" className="text-gold text-xs font-sans hover:text-gold-light transition-colors flex items-center gap-1">
-                  Get started →
-                </a>
+              <div>
+                <div className="label-tag mb-1.5 text-[10px]">Multi-Channel System</div>
+                <h3 className="font-serif text-2xl md:text-3xl text-warm-white font-light leading-tight">
+                  One System.{" "}
+                  <span className="text-gold font-semibold italic">Every Channel.</span>{" "}
+                  Infinite Authority.
+                </h3>
               </div>
             </div>
-          </motion.div>
 
-          {/* Pillar Cards */}
+            {/* Divider */}
+            <div className="hidden md:block w-px self-stretch bg-gold/10 shrink-0" />
+
+            {/* Center: description */}
+            <p className="text-muted text-sm leading-relaxed max-w-sm shrink-0">
+              Most agencies pick a lane. We built the highway. The Authority Stack™ coordinates
+              all four growth channels into a single, compounding client acquisition machine.
+            </p>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px self-stretch bg-gold/10 shrink-0" />
+
+            {/* Right: metrics row */}
+            <div className="flex flex-wrap gap-3 flex-1">
+              {pillars.map((p) => (
+                <div key={p.num} className="flex items-center gap-2 bg-dark-3 rounded-lg px-3 py-2 group-hover:bg-dark-4 transition-colors duration-300">
+                  <span className="text-sm shrink-0" style={{ color: p.accent }}>{p.icon}</span>
+                  <span className="text-xs text-warm-white font-sans font-medium whitespace-nowrap">{p.title}</span>
+                  <span className="text-[11px] font-serif font-semibold ml-1" style={{ color: p.accent }}>{p.metric}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <a href="#contact" className="text-gold text-sm font-sans hover:text-gold-light transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+              Get started →
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Pillar Cards — 4 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.num}
-              className="bg-dark-2 border border-gold/10 rounded-2xl p-6 relative overflow-hidden group hover:border-gold/25 hover:-translate-y-1 transition-all duration-400"
+              className="bg-dark-2 border border-gold/10 rounded-2xl relative overflow-hidden group hover:border-gold/25 hover:-translate-y-1 transition-all duration-400 flex flex-col"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xs font-sans font-medium text-muted tracking-wider">{pillar.num}</span>
-                  <span className="text-2xl" style={{ color: pillar.accent }}>{pillar.icon}</span>
+              {/* Graphic */}
+              <div className="relative w-full overflow-hidden rounded-t-2xl bg-black/40" style={{ aspectRatio: "16/11" }}>
+                <Image
+                  src={pillar.image}
+                  alt={pillar.title}
+                  fill
+                  className="object-cover object-center scale-105"
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dark-2" />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-6 flex flex-col flex-1">
+                <div className="flex items-start justify-between mb-3">
+                  <span className="text-sm font-sans font-medium text-muted tracking-wider">{pillar.num}</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-serif text-base font-semibold" style={{ color: pillar.accent }}>{pillar.metric}</span>
+                    <span className="text-[11px] text-muted font-sans">{pillar.metricLabel}</span>
+                  </div>
                 </div>
 
-                <h3 className="font-serif text-xl text-warm-white font-light mb-1">{pillar.title}</h3>
-                <p className="text-xs text-muted font-sans mb-3">{pillar.sub}</p>
-                <p className="text-xs text-muted/80 leading-relaxed mb-4">{pillar.desc}</p>
+                <h3 className="font-serif text-2xl text-warm-white font-light mb-1">{pillar.title}</h3>
+                <p className="text-sm text-muted font-sans mb-3">{pillar.sub}</p>
+                <p className="text-sm text-muted/80 leading-relaxed mb-4">{pillar.desc}</p>
 
-                {/* Metric badge */}
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="font-serif text-lg font-semibold" style={{ color: pillar.accent }}>
-                    {pillar.metric}
-                  </span>
-                  <span className="text-[10px] text-muted font-sans">{pillar.metricLabel}</span>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 mt-auto">
                   {pillar.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[9px] font-sans font-medium px-2 py-0.5 rounded-full border"
+                      className="text-[11px] font-sans font-medium px-2.5 py-1 rounded-full border"
                       style={{ borderColor: `${pillar.accent}30`, color: pillar.accent, backgroundColor: `${pillar.accent}10` }}
                     >
                       {tag}
