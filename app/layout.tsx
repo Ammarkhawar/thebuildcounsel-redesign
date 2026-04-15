@@ -33,33 +33,33 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thebuildcounsel.com"),
-  title: "The Build Counsel — Growth Agency for Law Firms",
+  title: "Law Firm SEO Services & Legal Marketing | The Build Counsel",
   description:
-    "The Build Counsel is the only growth agency built exclusively for law firms. We deploy the Authority Stack™ — a multi-channel system that turns search, paid ads, social, and conversion into a unified client acquisition machine.",
-  keywords: ["law firm marketing", "legal SEO", "law firm growth", "attorney marketing", "law firm SEO", "legal digital marketing"],
+    "The Build Counsel delivers law firm SEO services, paid ads and AI search marketing for Canadian law firms. One system. Every channel. Apply now.",
+  keywords: ["law firm SEO", "law firm marketing", "legal SEO services", "legal marketing Canada", "AI search marketing", "law firm paid ads", "attorney marketing", "legal digital marketing"],
   authors: [{ name: "The Build Counsel" }],
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_CA",
     url: "https://thebuildcounsel.com",
     siteName: "The Build Counsel",
-    title: "The Build Counsel — Growth Agency for Law Firms",
+    title: "Law Firm SEO Services & Legal Marketing | The Build Counsel",
     description:
-      "SEO, websites, and growth systems built specifically to turn traffic into paying clients. We don't work with everyone — just the firms serious about dominating their market.",
+      "The Build Counsel delivers law firm SEO services, paid ads and AI search marketing for Canadian law firms. One system. Every channel. Apply now.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "The Build Counsel — Growth Agency for Law Firms",
+        alt: "Law Firm SEO Services & Legal Marketing | The Build Counsel",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Build Counsel — Growth Agency for Law Firms",
+    title: "Law Firm SEO Services & Legal Marketing | The Build Counsel",
     description:
-      "SEO, websites, and growth systems built specifically to turn traffic into paying clients.",
+      "The Build Counsel delivers law firm SEO services, paid ads and AI search marketing for Canadian law firms. One system. Every channel. Apply now.",
     images: ["/og-image.png"],
   },
   robots: {
