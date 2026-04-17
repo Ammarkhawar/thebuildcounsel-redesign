@@ -126,13 +126,6 @@ export default function Results() {
             in signed case value generated for the firms we represent.
           </p>
 
-          <a
-            href="#contact"
-            className="relative z-10 inline-flex items-center gap-2.5 bg-gold hover:bg-gold-light text-warm-white font-sans font-semibold text-sm md:text-base px-7 py-3.5 rounded-lg transition-colors duration-300"
-          >
-            <TieIcon className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            Build My Authority
-          </a>
         </motion.div>
 
         {/* Recent clients — auto-scrolling marquee */}

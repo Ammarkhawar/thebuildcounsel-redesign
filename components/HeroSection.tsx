@@ -371,7 +371,7 @@ export default function HeroSection() {
               transition={{ duration: 0.4 }}
             >
               {rotatingWords[wordIndex]}
-            </motion.span>!
+            </motion.span>
           </h1>
 
           <p className="font-sans text-sm sm:text-base md:text-lg text-warm-white/80 leading-relaxed max-w-xl mx-auto mb-8">
