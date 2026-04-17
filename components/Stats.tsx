@@ -1,36 +1,15 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 
 const stats = [
-  { value: 6, prefix: "$", suffix: "B+", label: "In signed case value", sub: "Generated for our clients", isText: false },
-  { value: 12, prefix: "", suffix: "+", label: "Practice areas covered", sub: "By our system", isText: false },
-  { value: 0, prefix: "", suffix: "90 days", label: "To first results", sub: "Guaranteed or we work free", isText: true },
-  { value: 340, prefix: "", suffix: "%", label: "Average traffic growth", sub: "In the first 12 months", isText: false },
+  { display: "$6B+", label: "In signed case value", sub: "Generated for our clients" },
+  { display: "12+", label: "Practice areas covered", sub: "By our system" },
+  { display: "90 days", label: "To first results", sub: "Guaranteed or we work free" },
+  { display: "340%", label: "Average traffic growth", sub: "In the first 12 months" },
 ];
-
-function AnimatedNumber({ value, prefix, suffix, inView, isText }: { value: number; prefix: string; suffix: string; inView: boolean; isText: boolean }) {
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView || isText) return;
-    let start = 0;
-    const duration = 1800;
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [inView, value, isText]);
-
-  if (isText) return <span>{suffix}</span>;
-  return <span>{prefix}{display}{suffix}</span>;
-}
 
 export default function Stats() {
   const ref = useRef(null);
@@ -51,7 +30,7 @@ export default function Stats() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
               <div className="font-serif text-4xl md:text-5xl lg:text-6xl text-warm-white font-light mb-2 group-hover:text-gold transition-colors duration-500">
-                <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} inView={inView} isText={stat.isText} />
+                {stat.display}
               </div>
               <div className="text-base font-sans font-medium text-warm-white/80 mb-1">{stat.label}</div>
               <div className="text-xs text-muted font-sans">{stat.sub}</div>
