@@ -16,7 +16,7 @@ const pillars = [
     accent: "#3b82f6",
     metric: "+980%",
     metricLabel: "organic growth",
-    image: "/service-search.png",
+    image: "/service-search.jpg",
     imageAlt: "Law firm SEO services showing organic search growth results for Canadian legal practices",
   },
   {
@@ -30,7 +30,7 @@ const pillars = [
     accent: "#C8411C",
     metric: "6.2×",
     metricLabel: "lead multiplier",
-    image: "/service-paid.png",
+    image: "/service-paid.jpg",
     imageAlt: "Google Ads and paid search campaigns for law firms in Canada",
   },
   {
@@ -44,7 +44,7 @@ const pillars = [
     accent: "#a855f7",
     metric: "+41%",
     metricLabel: "brand lift",
-    image: "/service-social.png",
+    image: "/service-social.jpg",
     imageAlt: "Social media advertising campaigns for law firms and legal practices",
   },
   {
@@ -58,14 +58,14 @@ const pillars = [
     accent: "#10b981",
     metric: "38%",
     metricLabel: "conv. lift",
-    image: "/service-conversion.png",
+    image: "/service-conversion.jpg",
     imageAlt: "Law firm web design and conversion rate optimization for legal practices",
   },
 ];
 
 export default function AuthorityStack() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-20px" });
 
   return (
     <section id="services" ref={ref} className="section-pad">
@@ -153,7 +153,7 @@ export default function AuthorityStack() {
               className="bg-dark-2 border border-gold/10 rounded-2xl relative overflow-hidden group hover:border-gold/25 hover:-translate-y-1 transition-all duration-400 flex flex-col"
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.05 }}
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
