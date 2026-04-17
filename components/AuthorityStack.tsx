@@ -9,7 +9,7 @@ const pillars = [
     num: "01",
     title: "Search Authority",
     sub: "SEO & AI Search",
-    desc: "Dominate Google, Bing, and emerging AI search engines like ChatGPT and Perplexity. We build topical authority so your firm is the answer — everywhere clients look.",
+    desc: "Dominate Google, Bing, and AI search engines like ChatGPT, Claude and Perplexity through expert law firm SEO services. We build topical authority so your firm is the answer — everywhere legal clients look across Canada.",
     icon: "↑",
     tags: ["Technical SEO", "Content Authority", "AI Search", "Local SEO"],
     gradient: "from-blue-500/10 to-transparent",
@@ -17,12 +17,13 @@ const pillars = [
     metric: "+980%",
     metricLabel: "organic growth",
     image: "/service-search.png",
+    imageAlt: "Law firm SEO services showing organic search growth results for Canadian legal practices",
   },
   {
     num: "02",
     title: "Paid Acquisition",
     sub: "Google Ads · LSA · PPC",
-    desc: "Precision-targeted paid campaigns that generate qualified leads — not just clicks. Google Local Service Ads, PPC, and retargeting built for law firm conversion rates.",
+    desc: "Precision-targeted paid campaigns that generate qualified leads — not just clicks. Google Local Service Ads, PPC, and retargeting built specifically for law firm conversion rates in competitive Canadian legal markets.",
     icon: "◈",
     tags: ["Google Ads", "LSA", "PPC", "Retargeting"],
     gradient: "from-gold/10 to-transparent",
@@ -30,12 +31,13 @@ const pillars = [
     metric: "6.2×",
     metricLabel: "lead multiplier",
     image: "/service-paid.png",
+    imageAlt: "Google Ads and paid search campaigns for law firms in Canada",
   },
   {
     num: "03",
     title: "Social Authority",
     sub: "Facebook · Instagram · Retargeting",
-    desc: "Build brand omnipresence across social platforms. We turn social media into a trust-building engine that keeps your firm top of mind throughout the client journey.",
+    desc: "Build brand omnipresence across social platforms. We turn social media into a trust-building engine that keeps your legal practice top of mind throughout the entire client journey — from first search to signed retainer.",
     icon: "◎",
     tags: ["Facebook Ads", "Instagram", "Brand Building", "Audience Targeting"],
     gradient: "from-purple-500/10 to-transparent",
@@ -43,12 +45,13 @@ const pillars = [
     metric: "+41%",
     metricLabel: "brand lift",
     image: "/service-social.png",
+    imageAlt: "Social media advertising campaigns for law firms and legal practices",
   },
   {
     num: "04",
     title: "Conversion Infrastructure",
     sub: "Website Design & CRO",
-    desc: "Your website is your best salesperson. We engineer high-converting landing pages, intake forms, and site experiences designed to turn visitors into signed clients.",
+    desc: "Your website is your best salesperson. We engineer high-converting law firm web design, intake forms, and site experiences built to turn visitors into signed clients — not just traffic numbers.",
     icon: "⊕",
     tags: ["Web Design", "CRO", "Intake Forms", "A/B Testing"],
     gradient: "from-emerald-500/10 to-transparent",
@@ -56,6 +59,7 @@ const pillars = [
     metric: "38%",
     metricLabel: "conv. lift",
     image: "/service-conversion.png",
+    imageAlt: "Law firm web design and conversion rate optimization for legal practices",
   },
 ];
 
@@ -75,11 +79,12 @@ export default function AuthorityStack() {
         >
           <div className="label-tag mb-5 mx-auto">The System</div>
           <h2 className="heading-lg text-warm-white mb-5">
-            The Authority Stack™
+            The Authority Stack™ — Our Law Firm SEO &amp; Growth Framework
           </h2>
           <p className="body-lg max-w-2xl mx-auto">
-            Four synchronized pillars that work together to make your firm impossible to ignore —
-            across every channel your future clients use to find legal help.
+            Four synchronized pillars that work together to make your firm impossible to ignore
+            across every channel your future clients use. This is not SEO alone. This is not ads alone.
+            This is law firm SEO services, paid acquisition, social authority, and conversion, working as one.
           </p>
         </motion.div>
 
@@ -104,7 +109,7 @@ export default function AuthorityStack() {
                 <h3 className="font-serif text-2xl md:text-3xl text-warm-white font-light leading-tight">
                   One System.{" "}
                   <span className="text-gold font-semibold italic">Every Channel.</span>{" "}
-                  Infinite Authority.
+                  Maximum Authority.
                 </h3>
               </div>
             </div>
@@ -114,8 +119,9 @@ export default function AuthorityStack() {
 
             {/* Center: description */}
             <p className="text-muted text-sm leading-relaxed max-w-sm shrink-0">
-              Most agencies pick a lane. We built the highway. The Authority Stack™ coordinates
-              all four growth channels into a single, compounding client acquisition machine.
+              Most agencies pick one lane. We built the highway. The Authority Stack™ coordinates
+              all four growth channels into a single, compounding client acquisition machine for
+              law firms across Canada.
             </p>
 
             {/* Divider */}
@@ -133,7 +139,7 @@ export default function AuthorityStack() {
             </div>
 
             {/* CTA */}
-            <a href="#contact" className="text-gold text-sm font-sans hover:text-gold-light transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+            <a href="#apply-form" className="text-gold text-sm font-sans hover:text-gold-light transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap">
               Get started →
             </a>
           </div>
@@ -155,7 +161,7 @@ export default function AuthorityStack() {
               <div className="relative w-full overflow-hidden rounded-t-2xl bg-black/40" style={{ aspectRatio: "16/11" }}>
                 <Image
                   src={pillar.image}
-                  alt={pillar.title}
+                  alt={pillar.imageAlt}
                   fill
                   className="object-cover object-center scale-105"
                   sizes="(max-width: 768px) 100vw, 30vw"

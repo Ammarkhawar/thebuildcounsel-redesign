@@ -2,19 +2,20 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 const stats = [
-  { value: 6, prefix: "$", suffix: "B+", label: "In Signed Case Value", sub: "Generated for our clients" },
-  { value: 100, prefix: "", suffix: "%", label: "Law Firms Only", sub: "No exceptions, ever" },
-  { value: 8, prefix: "", suffix: "+", label: "Practice Areas", sub: "Covered by our system" },
-  { value: 340, prefix: "+", suffix: "%", label: "Average Traffic Growth", sub: "In the first 12 months" },
+  { value: 6, prefix: "$", suffix: "B+", label: "In signed case value", sub: "Generated for our clients", isText: false },
+  { value: 12, prefix: "", suffix: "+", label: "Practice areas covered", sub: "By our system", isText: false },
+  { value: 0, prefix: "", suffix: "90 days", label: "To first results", sub: "Guaranteed or we work free", isText: true },
+  { value: 340, prefix: "", suffix: "%", label: "Average traffic growth", sub: "In the first 12 months", isText: false },
 ];
 
-function AnimatedNumber({ value, prefix, suffix, inView }: { value: number; prefix: string; suffix: string; inView: boolean }) {
+function AnimatedNumber({ value, prefix, suffix, inView, isText }: { value: number; prefix: string; suffix: string; inView: boolean; isText: boolean }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || isText) return;
     let start = 0;
     const duration = 1800;
     const step = (timestamp: number) => {
@@ -25,8 +26,9 @@ function AnimatedNumber({ value, prefix, suffix, inView }: { value: number; pref
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
-  }, [inView, value]);
+  }, [inView, value, isText]);
 
+  if (isText) return <span>{suffix}</span>;
   return <span>{prefix}{display}{suffix}</span>;
 }
 
@@ -49,7 +51,7 @@ export default function Stats() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
               <div className="font-serif text-4xl md:text-5xl lg:text-6xl text-warm-white font-light mb-2 group-hover:text-gold transition-colors duration-500">
-                <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} inView={inView} />
+                <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} inView={inView} isText={stat.isText} />
               </div>
               <div className="text-base font-sans font-medium text-warm-white/80 mb-1">{stat.label}</div>
               <div className="text-xs text-muted font-sans">{stat.sub}</div>
@@ -57,6 +59,21 @@ export default function Stats() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          className="flex justify-center mt-14"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          <MagneticButton as="a" href="#apply-form" className="btn-primary text-sm px-8 py-3.5">
+            Apply Now
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </MagneticButton>
+        </motion.div>
       </div>
     </section>
   );

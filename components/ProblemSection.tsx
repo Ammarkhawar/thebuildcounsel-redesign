@@ -6,10 +6,10 @@ import { motion, useInView, type Variants } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const bulletPoints = [
-  "Maximizing your visibility across Google and AI search platforms (ChatGPT, Perplexity, etc)",
-  "Reducing your cost per client with a smarter Google Ads strategy.",
-  "Running social ad campaigns that bring in qualified leads while building brand reach.",
-  "Increasing both the volume and quality of leads your firm receives.",
+  "Maximizing your visibility through professional law firm SEO services across Google and AI search platforms (ChatGPT, Claude, Perplexity, etc)",
+  "Reducing your cost per client with a smarter Google Ads strategy",
+  "Running social ad campaigns that bring in qualified leads while building brand reach across Canada",
+  "Increasing both the volume and quality of leads your practice receives",
 ];
 
 const fadeUp: Variants = {
@@ -66,11 +66,11 @@ export default function ProblemSection() {
               animate={inView ? "visible" : "hidden"}
               className="heading-lg text-warm-white mb-8"
             >
-              Are you struggling to get enough{" "}
+              Struggling to Get{" "}
               <span className="text-gradient font-semibold italic">
                 High-Quality Leads
               </span>{" "}
-              for Your Law Practice?
+              for Your Legal Practice?
             </motion.h2>
 
             {/* Body paragraphs */}
@@ -82,9 +82,9 @@ export default function ProblemSection() {
               className="space-y-5 mb-8"
             >
               <p className="font-sans text-base text-warm-white/70 leading-relaxed">
-                The internet is crowded. Your potential clients are searching on
-                Google, AI platforms like ChatGPT, and across social media. If you
-                rely on just one channel, you limit your growth.
+                The internet is crowded. Your potential clients are searching on Google, AI
+                platforms like ChatGPT, Claude, Perplexity, and across social media. If you rely
+                on just one channel, you limit your growth.
               </p>
               <p className="font-sans text-base text-warm-white/70 leading-relaxed">
                 But you already know that. Chances are you&apos;ve hired an
@@ -93,7 +93,7 @@ export default function ProblemSection() {
               </p>
               <p className="font-sans text-base text-warm-white/70 leading-relaxed">
                 You&apos;re here because you want real growth. You likely need help
-                with one (or more) of the following:
+                with one or more of the following:
               </p>
             </motion.div>
 
@@ -135,28 +135,26 @@ export default function ProblemSection() {
               />
 
               <blockquote className="relative space-y-4">
-                <p className="font-serif text-xl md:text-2xl text-warm-white font-medium italic leading-snug">
-                  Your law firm doesn&apos;t have a lead problem –{" "}
+                <p className="font-serif text-2xl md:text-3xl text-warm-white font-medium italic leading-snug">
+                  &ldquo;Your firm doesn&apos;t have a lead problem —{" "}
                   <span className="text-gradient not-italic">
                     it has a visibility problem.
                   </span>
                 </p>
                 <p className="font-sans text-base text-warm-white/75 leading-relaxed">
-                  Today&apos;s prospects don&apos;t search in one place. They
+                  Today&apos;s legal clients don&apos;t search in one place. They
                   check Google, AI tools, maps, and social platforms before
-                  making a decision.
-                </p>
-                <p className="font-sans text-base text-warm-white/75 leading-relaxed">
-                  If your firm isn&apos;t showing up everywhere that matters,
-                  you&apos;re losing cases to firms that are.
+                  making a decision. If your firm isn&apos;t showing up
+                  everywhere that matters, you&apos;re losing cases to competitors
+                  who are investing in proper SEO marketing for law firms.
                 </p>
                 <p className="font-sans text-base text-warm-white/75 leading-relaxed">
                   That&apos;s why we built{" "}
                   <span className="font-semibold text-warm-white">
                     The Authority Stack&trade;
                   </span>{" "}
-                  – a system designed to position your firm across all search
-                  and social to drive signed cases, not clicks.
+                  — a legal marketing system designed to position your firm
+                  across every channel your future clients use.&rdquo;
                 </p>
               </blockquote>
 
@@ -174,21 +172,6 @@ export default function ProblemSection() {
               </figcaption>
             </motion.figure>
 
-            {/* CTA Button */}
-            <motion.div
-              custom={6}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-            >
-              <a
-                href="#pricing"
-                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-warm-white font-sans font-semibold text-sm tracking-wide uppercase px-8 py-4 rounded-lg transition-colors duration-300"
-              >
-                Get your free strategy call
-                <span aria-hidden="true">→</span>
-              </a>
-            </motion.div>
           </div>
 
           {/* Right — Image */}

@@ -5,19 +5,19 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 
 const clients = [
-  { name: "The Power Lawyers", logo: "/logo-power-lawyers.png" },
-  { name: "Institute for Professionals in Taxation", logo: "/logo-ipt.png" },
-  { name: "Lawline", logo: "/logo-lawline.png" },
-  { name: "Tschetter Sulzer Muccio", logo: "/logo-tsm.png" },
+  { name: "The Power Lawyers client logo", logo: "/logo-power-lawyers.png" },
+  { name: "Institute for Professionals in Taxation client logo", logo: "/logo-ipt.png" },
+  { name: "Lawline client logo", logo: "/logo-lawline.png" },
+  { name: "Tschetter Sulzer Muccio client logo", logo: "/logo-tsm.png" },
 ];
 
 const recentClients = [
-  { name: "Client 1", logo: "/client-1.png" },
-  { name: "Client 2", logo: "/client-2.png" },
-  { name: "Client 3", logo: "/client-3.png" },
-  { name: "Gummie Bears", logo: "/client-gummie.png" },
-  { name: "Full Logo", logo: "/client-full.png" },
-  { name: "Eden", logo: "/client-eden.png" },
+  { name: "client logo", logo: "/client-1.png" },
+  { name: "client logo", logo: "/client-2.png" },
+  { name: "client logo", logo: "/client-3.png" },
+  { name: "client logo", logo: "/client-gummie.png" },
+  { name: "client logo", logo: "/client-full.png" },
+  { name: "client logo", logo: "/client-eden.png" },
 ];
 
 function TieIcon({ className }: { className?: string }) {
@@ -61,8 +61,9 @@ export default function Results() {
           <p className="body-lg">
             The Authority Stack&trade; ensures your firm shows up across Google, AI
             search, paid media, and social — creating consistent visibility where
-            high-value clients are making decisions. The result? Stronger market
-            presence, more signed cases, and measurable growth.
+            high-value legal clients are making decisions. The result? Stronger market
+            presence, more signed cases, and measurable growth through proven SEO
+            marketing for law firms across Canada.
           </p>
         </motion.div>
 
@@ -73,7 +74,7 @@ export default function Results() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
-          Smart Law Firms Choose The Build Counsel
+          Smart Legal Practices Choose The Build Counsel
         </motion.p>
 
         {/* Logo strip */}

@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import Image from "next/image";
 
-const rotatingWords = ["Dominate", "Own", "Lead", "Win"];
+const rotatingWords = ["Dominate", "Rank", "Scale", "Convert", "Win"];
 
 // ─── Floating card wrapper ────────────────────────────────────────────────────
 // Outer div handles position + responsive scale (Tailwind transforms).
@@ -327,7 +327,7 @@ export default function HeroSection() {
         <div className="absolute inset-x-0 bottom-0 h-[75%]">
           <Image
             src="/hero-bg.png"
-            alt=""
+            alt="Law firm SEO services and legal marketing system dashboard showing Google, AI search, and paid ads results for Canadian law firms"
             fill
             priority
             sizes="100vw"
@@ -355,44 +355,47 @@ export default function HeroSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="label-tag mb-5 mx-auto">
-            <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" aria-hidden="true" />
-            Law Firms Only · No Exceptions
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-warm-white/30 bg-warm-white/10 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse shrink-0" aria-hidden="true" />
+            <span className="text-[11px] font-sans font-semibold text-warm-white tracking-[0.18em] uppercase">Built for the Legal Industry</span>
           </div>
 
-          <h1 className="font-serif font-light leading-[1.05] tracking-tight text-warm-white mb-5 text-[2.5rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
-            We Help Law Firms{" "}
-            <span className="block">
-              <motion.span
-                key={wordIndex}
-                className="text-gradient font-semibold italic"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-              >
-                {rotatingWords[wordIndex]}
-              </motion.span>{" "}
-              Their Market
-            </span>
+          <h1 className="font-serif font-light leading-[1.1] tracking-tight text-warm-white mb-5 text-[2.25rem] sm:text-[2.75rem] md:text-5xl lg:text-[3.5rem] xl:text-6xl max-w-2xl mx-auto">
+            Law Firm SEO Services &amp; Legal Marketing That Help You{" "}
+            <motion.span
+              key={wordIndex}
+              className="text-gradient font-semibold italic"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+            >
+              {rotatingWords[wordIndex]}
+            </motion.span>!
           </h1>
 
-          <p className="font-sans text-xs sm:text-sm md:text-base text-muted leading-relaxed max-w-lg mx-auto mb-7">
-            The Authority Stack™ is a multi-channel growth system that turns search, paid ads,
-            social media, and conversion into a unified client acquisition machine — built
-            exclusively for law firms.
+          <p className="font-sans text-sm sm:text-base md:text-lg text-warm-white/80 leading-relaxed max-w-xl mx-auto mb-8">
+            The Authority Stack™ is a complete legal marketing system, covering law firm SEO services,
+            web design, Google Ads, and AI search, built exclusively for Canadian law firms that want
+            signed cases, not vanity metrics.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <MagneticButton as="a" href="#contact" className="btn-primary text-sm py-3 px-6">
-              Book a Strategy Call
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
+            <MagneticButton as="a" href="#apply-form" className="btn-primary text-sm py-3 px-6">
+              Apply Now
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </MagneticButton>
-            <MagneticButton as="a" href="#services" className="btn-ghost text-sm py-3 px-6">
+            <a
+              href="#services"
+              className="text-sm font-medium text-warm-white/90 hover:text-warm-white border border-warm-white/20 hover:border-warm-white/40 bg-warm-white/5 hover:bg-warm-white/10 backdrop-blur-sm transition-all duration-200 font-sans flex items-center gap-2 px-5 py-3 rounded-full group"
+            >
               See the Authority Stack™
-            </MagneticButton>
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform duration-200">
+                <path d="M2 11L11 2M11 2H5M11 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
           </div>
         </motion.div>
       </div>

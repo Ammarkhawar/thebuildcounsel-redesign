@@ -109,8 +109,8 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <MagneticButton as="a" href="#contact" className="btn-primary text-sm" aria-label="Book a strategy call">
-            Book Strategy Call
+          <MagneticButton as="a" href="#apply-form" className="btn-primary text-sm" aria-label="Apply now">
+            Apply Now
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -163,11 +163,11 @@ export default function Navbar() {
               <div className="pt-3 mt-2 border-t border-gold/10">
                 <MagneticButton
                   as="a"
-                  href="#contact"
+                  href="#apply-form"
                   className="btn-primary w-full justify-center"
                   onClick={() => setMenuOpen(false)}
                 >
-                  Book Strategy Call
+                  Apply Now
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
