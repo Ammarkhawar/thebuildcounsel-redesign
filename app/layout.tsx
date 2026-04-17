@@ -68,6 +68,43 @@ export const metadata: Metadata = {
   },
 };
 
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": ["ProfessionalService", "LocalBusiness"],
+  "name": "The Build Counsel",
+  "url": "https://www.thebuildcounsel.com",
+  "logo": "https://www.thebuildcounsel.com/logo.svg",
+  "image": "https://www.thebuildcounsel.com/og-image.png",
+  "description": "The Build Counsel delivers law firm SEO services, paid ads and AI search marketing exclusively for Canadian law firms. One system. Every channel.",
+  "telephone": "+13658055602",
+  "email": "info@thebuildcounsel.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CA"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Canada"
+  },
+  "serviceType": [
+    "Law Firm SEO Services",
+    "Legal Marketing",
+    "Google Ads for Law Firms",
+    "AI Search Optimization",
+    "Legal Website Design",
+    "Reputation Management"
+  ],
+  "priceRange": "$$$",
+  "knowsAbout": [
+    "Law Firm SEO",
+    "Legal Digital Marketing",
+    "Google Ads for Lawyers",
+    "AI Search Marketing",
+    "Canadian Legal Marketing"
+  ],
+  "sameAs": []
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,6 +112,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(cormorant.variable, dmSans.variable, dancing.variable, "font-sans")}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
