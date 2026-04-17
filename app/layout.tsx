@@ -86,14 +86,18 @@ const schemaMarkup = {
     "@type": "Country",
     "name": "Canada"
   },
-  "serviceType": [
-    "Law Firm SEO Services",
-    "Legal Marketing",
-    "Google Ads for Law Firms",
-    "AI Search Optimization",
-    "Legal Website Design",
-    "Reputation Management"
-  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Legal Marketing Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Law Firm SEO Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Legal Marketing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads for Law Firms" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Search Optimization" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Legal Website Design" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reputation Management" } }
+    ]
+  },
   "priceRange": "$$$",
   "knowsAbout": [
     "Law Firm SEO",
