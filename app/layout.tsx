@@ -68,6 +68,53 @@ export const metadata: Metadata = {
   },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What makes your law firm SEO services different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most agencies run generic SEO campaigns. We build legal-specific content strategies, target the exact keywords your potential clients search in Canada, and optimize for both traditional Google rankings and emerging AI search platforms like ChatGPT, Claude, and Perplexity. Every campaign is built exclusively around legal search intent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to see results from law firm SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most of our clients see measurable improvements in rankings and traffic within 60–90 days. Paid channels like Google Ads generate leads within the first two weeks. Full Authority Stack results compound over 6–12 months as your SEO authority builds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with law firms across all of Canada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We serve legal practices across Canada including Toronto, Vancouver, Calgary, Ottawa, and Montreal. Our law firm SEO services are tailored to your specific city and legal market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with any practice area?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We have experience across all major areas of law including personal injury, criminal defense, immigration, family law, employment law, and business law. If you don't see your practice area listed, reach out — we likely cover it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in the $5,000/month package?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Everything. Law firm SEO services, Google Ads management, Facebook and Instagram campaigns, law firm web design, content production, reputation management, and a dedicated strategy manager. No hidden fees, no upsells."
+      }
+    }
+  ]
+};
+
 const schemaMarkup = {
   "@context": "https://schema.org",
   "@type": ["ProfessionalService", "LocalBusiness"],
@@ -120,6 +167,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
       <body>{children}</body>

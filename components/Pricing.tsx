@@ -187,13 +187,11 @@ export default function Pricing() {
               Frequently Asked Questions
             </h3>
           </motion.div>
-          {faqInView && (
-            <div className="space-y-3">
-              {faqs.map((faq, i) => (
-                <FaqItem key={faq.q} faq={faq} index={i} />
-              ))}
-            </div>
-          )}
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <FaqItem key={faq.q} faq={faq} index={i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
