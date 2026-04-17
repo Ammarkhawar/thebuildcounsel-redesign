@@ -12,7 +12,6 @@ import Stats from "@/components/Stats";
 import Process from "@/components/Process";
 import PracticeAreas from "@/components/PracticeAreas";
 import Pricing from "@/components/Pricing";
-import CTASection from "@/components/CTASection";
 import ApplicationForm from "@/components/ApplicationForm";
 import { CinematicFooter } from "@/components/ui/motion-footer";
 
@@ -34,7 +33,6 @@ export default function Home() {
         <Process />
         <PracticeAreas />
         <Pricing />
-        <CTASection />
         <ApplicationForm />
       </main>
       <CinematicFooter />
