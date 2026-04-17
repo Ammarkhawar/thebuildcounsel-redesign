@@ -30,12 +30,13 @@ export default function PracticeAreas() {
         >
           <div className="label-tag mb-5 mx-auto">Coverage</div>
           <h2 className="heading-lg text-warm-white mb-5">
-            Built for Every{" "}
-            <span className="text-gradient font-semibold italic">Practice Area</span>
+            Built for Every Area of{" "}
+            <span className="text-gradient font-semibold italic">Legal Practice</span>
           </h2>
           <p className="body-lg max-w-xl mx-auto">
-            Our system adapts to your practice area — with industry-specific keyword strategies,
-            content frameworks, and audience targeting.
+            Our law firm SEO services and marketing system adapts to your practice area — with
+            legal-specific keyword strategies, content frameworks, and audience targeting built
+            for each area of law across Canada 🇨🇦.
           </p>
         </motion.div>
 
@@ -56,27 +57,20 @@ export default function PracticeAreas() {
                 {area.name}
               </h3>
               <p className="text-xs text-muted leading-relaxed">{area.desc}</p>
-
-              <div className="mt-4 flex items-center gap-1 text-[10px] text-gold/60 group-hover:text-gold/80 transition-colors duration-300 font-sans font-medium">
-                Learn more
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
-                  <path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
             </motion.div>
           ))}
         </div>
 
         {/* Bottom note */}
         <motion.p
-          className="text-center text-xs text-muted/60 font-sans mt-8"
+          className="text-center text-sm text-muted/70 font-sans mt-8"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
         >
-          Don&apos;t see your practice area?{" "}
-          <a href="#contact" className="text-gold/70 hover:text-gold underline underline-offset-2 transition-colors">
-            Let&apos;s talk — we cover more than you think.
+          Don&apos;t see your area of law?{" "}
+          <a href="#apply-form" className="text-gold hover:text-gold-light underline underline-offset-2 transition-colors">
+            We cover more than you think. →
           </a>
         </motion.p>
       </div>

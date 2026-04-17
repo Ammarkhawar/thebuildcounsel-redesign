@@ -13,7 +13,7 @@ const practiceAreas = [
   "Tax & Bankruptcy",
   "Estate Planning",
   "Employment Law",
-  "Other",
+  "Other Legal Practice",
 ];
 
 const budgetRanges = [
@@ -112,8 +112,8 @@ export default function ApplicationForm() {
             <span className="text-gradient font-semibold italic">With Us</span>
           </h2>
           <p className="body-lg max-w-xl mx-auto">
-            We review every application personally. If it&apos;s a fit, you&apos;ll hear
-            from us within one business day.
+            We review every application personally. If your firm is a fit for our law
+            firm SEO and marketing program, you&apos;ll hear from us within one business day.
           </p>
         </motion.div>
 
@@ -276,7 +276,7 @@ export default function ApplicationForm() {
 
           {/* Trust row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-muted font-sans">
-            {["Law firms only", "Response within 1 business day", "No spam, ever"].map((text, i) => (
+            {["Built for the legal industry", "Response within 1 business day", "No spam, ever"].map((text, i) => (
               <span key={text} className="flex items-center gap-2">
                 {i > 0 && <span className="hidden sm:block w-px h-3 bg-gold/20" aria-hidden="true" />}
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">

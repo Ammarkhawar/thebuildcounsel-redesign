@@ -6,11 +6,11 @@ import { MagneticButton } from "@/components/ui/magnetic-button";
 import { ChevronDown } from "lucide-react";
 
 const features = [
-  "Full SEO & AI Search Optimization",
+  "Full Law Firm SEO & AI Search Optimization",
   "Google Ads + Local Service Ads Management",
   "Facebook & Instagram Ad Campaigns",
-  "Website Design & Conversion Optimization",
-  "Monthly Content Production",
+  "Law Firm Web Design & Conversion Optimization",
+  "Monthly Legal Content Production",
   "Review Generation & Reputation Management",
   "Real-Time Analytics Dashboard",
   "Dedicated Strategy Manager",
@@ -18,20 +18,24 @@ const features = [
 
 const faqs = [
   {
-    q: "Is there a contract?",
-    a: "We require a 6-month initial commitment — enough time to build real momentum. After that, it's month-to-month.",
+    q: "What makes your law firm SEO services different?",
+    a: "Most agencies run generic SEO campaigns. We build legal-specific content strategies, target the exact keywords your potential clients search in Canada 🇨🇦, and optimize for both traditional Google rankings and emerging AI search platforms like ChatGPT, Claude, and Perplexity. Every campaign is built exclusively around legal search intent.",
   },
   {
-    q: "Do you work with solo attorneys?",
-    a: "Yes, as long as you have the budget and the ambition to grow. Firm size doesn't matter — intent does.",
+    q: "How long does it take to see results from law firm SEO?",
+    a: "Most of our clients see measurable improvements in rankings and traffic within 60–90 days. Paid channels like Google Ads generate leads within the first two weeks. Full Authority Stack™ results compound over 6–12 months as your SEO authority builds.",
   },
   {
-    q: "What's included in the monthly fee?",
-    a: "Everything. Strategy, execution, reporting, and optimization across all four Authority Stack pillars. No add-ons.",
+    q: "Do you work with law firms across all of Canada 🇨🇦?",
+    a: "Yes. We serve legal practices across Canada including Toronto, Vancouver, Calgary, Ottawa, and Montreal. Our law firm SEO services are tailored to your specific city and legal market.",
   },
   {
-    q: "Do you take on competing firms?",
-    a: "Never. Once you're a client, we protect your market position exclusively. We don't work with your competitors.",
+    q: "Do you work with any practice area?",
+    a: "We have experience across all major areas of law including personal injury, criminal defense, immigration, family law, employment law, and business law. If you don't see your practice area listed, reach out — we likely cover it.",
+  },
+  {
+    q: "What is included in the $5,000/month package?",
+    a: "Everything. Law firm SEO services, Google Ads management, Facebook and Instagram campaigns, law firm web design, content production, reputation management, and a dedicated strategy manager. No hidden fees, no upsells.",
   },
 ];
 
@@ -95,11 +99,11 @@ export default function Pricing() {
           <div className="label-tag mb-5 mx-auto">Investment</div>
           <h2 className="heading-lg text-warm-white mb-5">
             One Package.{" "}
-            <span className="text-gradient font-semibold italic">Everything.</span>
+            <span className="text-gradient font-semibold italic">Everything Included.</span>
           </h2>
           <p className="body-lg max-w-xl mx-auto">
             We don&apos;t believe in service tiers. Every client gets the full Authority Stack™ —
-            because partial execution gets partial results.
+            because partial law firm SEO and marketing execution gets partial results.
           </p>
         </motion.div>
 
@@ -149,8 +153,8 @@ export default function Pricing() {
               </div>
 
               <div className="flex mb-5">
-                <MagneticButton as="a" href="#contact" className="btn-primary flex-1 justify-center text-sm py-3.5">
-                  Book a Strategy Call
+                <MagneticButton as="a" href="#apply-form" className="btn-primary flex-1 justify-center text-sm py-3.5">
+                  Apply Now
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -158,11 +162,10 @@ export default function Pricing() {
               </div>
 
               {/* Trust signals */}
-              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-                {["No setup fees", "Results in 90 days", "Market exclusivity"].map((trust, i) => (
-                  <span key={trust} className="flex items-center gap-1.5 text-xs text-muted/50 font-sans">
-                    {i > 0 && <span className="hidden sm:block w-px h-3 bg-gold/20" />}
-                    <span className="text-gold/50">✓</span>
+              <div className="border-t border-gold/10 pt-5 flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-center gap-3 sm:gap-x-6 sm:gap-y-2">
+                {["No setup fees", "Results in 90 days", "Market exclusivity — we never work with two firms in the same practice area and city"].map((trust) => (
+                  <span key={trust} className="flex items-start gap-2 text-sm text-warm-white/70 font-sans">
+                    <span className="text-gold mt-0.5 shrink-0">✓</span>
                     {trust}
                   </span>
                 ))}
@@ -173,14 +176,17 @@ export default function Pricing() {
 
         {/* FAQ */}
         <div ref={faqRef} className="max-w-2xl mx-auto">
-          <motion.h3
-            className="font-serif text-2xl text-warm-white font-light text-center mb-8"
+          <motion.div
+            className="text-center mb-8"
             initial={{ opacity: 0 }}
             animate={faqInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5 }}
           >
-            Common Questions
-          </motion.h3>
+            <div className="label-tag mb-4 mx-auto">Common Questions</div>
+            <h3 className="font-serif text-3xl text-warm-white font-light">
+              Frequently Asked Questions
+            </h3>
+          </motion.div>
           {faqInView && (
             <div className="space-y-3">
               {faqs.map((faq, i) => (

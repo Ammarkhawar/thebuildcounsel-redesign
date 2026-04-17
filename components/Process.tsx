@@ -8,7 +8,7 @@ const steps = [
     num: "01",
     title: "Discovery Audit",
     sub: "Week 1–2",
-    desc: "We conduct a comprehensive audit of your firm's current digital footprint — SEO health, ad spend efficiency, website conversion rates, and competitive positioning. No guesswork. Just data.",
+    desc: "We conduct a comprehensive audit of your firm's current digital footprint — law firm SEO health, ad spend efficiency, website conversion rates, and competitive positioning in your local Canadian market 🇨🇦. No guesswork. Just data.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="6" stroke="currentColor" strokeWidth="1.4" />
@@ -22,7 +22,7 @@ const steps = [
     num: "02",
     title: "Authority Stack Design",
     sub: "Week 2–3",
-    desc: "Our strategists design a custom Authority Stack blueprint tailored to your practice areas, market, and growth goals. Every channel is mapped, sequenced, and budgeted.",
+    desc: "Our strategists design a custom Authority Stack blueprint tailored to your practice areas, Canadian market 🇨🇦, and growth goals. Every SEO and marketing channel is mapped, sequenced, and budgeted for maximum impact.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
@@ -37,7 +37,7 @@ const steps = [
     num: "03",
     title: "Infrastructure Build-Out",
     sub: "Week 3–6",
-    desc: "We build everything from the ground up — campaigns, content, landing pages, tracking, and intake flows. You approve. We execute. Nothing goes live without your sign-off.",
+    desc: "We build everything from the ground up — law firm SEO campaigns, content, landing pages, tracking, and intake flows. You approve. We execute. Nothing goes live without your sign-off.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path d="M3 16L7 12M17 3l-5 5M13 6l1 1M2 18l3.5-1 8-8-2.5-2.5-8 8L2 18z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -49,7 +49,7 @@ const steps = [
     num: "04",
     title: "Launch & Optimize",
     sub: "Month 2+",
-    desc: "We launch, monitor, and continuously optimize across all channels. Monthly reports, bi-weekly calls, and real-time dashboard access keep you fully in the loop.",
+    desc: "We launch, monitor, and continuously optimize across all channels. Monthly reports, bi-weekly calls, and real-time dashboard access keep you fully in the loop — so you always know exactly what your law firm SEO investment is generating.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path d="M4 16L9 11M16 4l-5 7M12 4h4v4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -78,10 +78,10 @@ export default function Process() {
           <div className="label-tag mb-5 mx-auto">How It Works</div>
           <h2 className="heading-lg text-warm-white mb-5">
             From Zero to{" "}
-            <span className="text-gradient font-semibold italic">Market Authority</span>
+            <span className="text-gradient font-semibold italic">Legal Market Authority</span>
           </h2>
           <p className="body-lg max-w-2xl mx-auto">
-            A proven 4-step methodology refined across dozens of law firm engagements.
+            A proven 4-step methodology refined across dozens of legal practice engagements across Canada 🇨🇦.
             Predictable, transparent, and built to compound over time.
           </p>
         </motion.div>

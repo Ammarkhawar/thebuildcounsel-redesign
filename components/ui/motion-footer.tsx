@@ -115,17 +115,17 @@ const STYLES = `
 // ─── Marquee strip ────────────────────────────────────────────────────────────
 const MarqueeItem = () => (
   <div className="flex items-center space-x-10 px-6 text-[#8a8784]">
-    <span>Authority Stack™</span>
+    <span>Law Firm SEO Services</span>
     <span className="text-[#C8411C]/60">✦</span>
-    <span>Law Firms Only</span>
+    <span>Legal Marketing Agency Canada</span>
+    <span className="text-[#C8411C]/60">✦</span>
+    <span>Authority Stack™</span>
     <span className="text-[#C8411C]/60">✦</span>
     <span>$6 Billion+ Generated</span>
     <span className="text-[#C8411C]/60">✦</span>
-    <span>Search · Paid · Social</span>
+    <span>SEO Marketing for Law Firms</span>
     <span className="text-[#C8411C]/60">✦</span>
-    <span>Dominate Your Market</span>
-    <span className="text-[#C8411C]/60">✦</span>
-    <span>No Exceptions</span>
+    <span>Google Ads · Legal SEO · AI Search</span>
     <span className="text-[#C8411C]/60">✦</span>
   </div>
 );
@@ -181,15 +181,6 @@ export function CinematicFooter() {
             COUNSEL
           </div>
 
-          {/* Marquee */}
-          <div className="absolute top-10 left-0 w-full overflow-hidden border-y py-3.5 z-10 -rotate-[1.5deg] scale-110"
-            style={{ borderColor: "rgba(200,65,28,0.15)", background: "rgba(8,8,8,0.7)", backdropFilter: "blur(12px)" }}
-          >
-            <div className="flex w-max tbc-marquee text-[11px] font-semibold tracking-[0.28em] uppercase">
-              <MarqueeItem /><MarqueeItem />
-            </div>
-          </div>
-
           {/* Center content */}
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-16 w-full max-w-5xl mx-auto">
             <h2
@@ -204,7 +195,8 @@ export function CinematicFooter() {
             </h2>
 
             <p className="text-sm md:text-base mb-10 text-center max-w-md" style={{ color: "#8a8784" }}>
-              We only take on a limited number of firms each quarter.
+              We only take on a limited number of legal practices each quarter —
+              to ensure every client gets our full attention and the results they deserve.
             </p>
 
             <div ref={linksRef} className="flex flex-col items-center gap-5 w-full">
@@ -212,12 +204,10 @@ export function CinematicFooter() {
               <div className="flex justify-center">
                 <MagneticButton
                   as="a"
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#apply-form"
                   className="btn-primary px-10 py-4 text-base flex items-center gap-3 group"
                 >
-                  Book Your Strategy Call
+                  Apply Now
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="group-hover:translate-x-0.5 transition-transform duration-300">
                     <path d="M2.5 11.5L11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -264,8 +254,8 @@ export function CinematicFooter() {
               className="tbc-glass-pill px-6 py-2.5 rounded-full flex items-center gap-2 justify-self-center mx-auto cursor-default"
             >
               <span className="tbc-heartbeat text-sm" style={{ color: "#C8411C" }}>✦</span>
-              <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#8a8784" }}>
-                Law Firms Only · No Exceptions
+              <span className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap" style={{ color: "#8a8784" }}>
+                Built for the Legal Industry · The Build Counsel · Canada 🇨🇦
               </span>
             </div>
 

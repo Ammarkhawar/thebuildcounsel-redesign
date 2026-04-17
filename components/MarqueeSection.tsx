@@ -1,22 +1,23 @@
 "use client";
 
-const items = [
-  "Search Authority",
-  "Paid Acquisition",
-  "Social Authority",
-  "Conversion Infrastructure",
-  "Google Ads",
-  "Legal SEO",
+const tape1Items = [
+  "Law Firm SEO Services",
+  "Legal Marketing Canada",
+  "$6 Billion+ Generated",
+  "Search · Paid · Social",
   "AI Search Optimization",
-  "Local Service Ads",
-  "Google Maps Rankings",
-  "Website Design",
-  "Client Acquisition",
   "Authority Stack™",
+  "SEO for Law Firms",
 ];
 
-// Double so the seamless loop works at the halfway point
-const doubled = [...items, ...items];
+const tape2Items = [
+  "Law Firm SEO Services",
+  "Legal Marketing Agency Canada",
+  "Authority Stack™",
+  "$6 Billion+ Generated",
+  "SEO Marketing for Law Firms",
+  "Google Ads · Legal SEO · AI Search",
+];
 
 const Star = () => (
   <span
@@ -28,14 +29,17 @@ const Star = () => (
 );
 
 function Tape({
+  items,
   direction,
   rotate,
   swayDelay = "0s",
 }: {
+  items: string[];
   direction: "marquee" | "marquee-reverse";
   rotate: string;
   swayDelay?: string;
 }) {
+  const doubled = [...items, ...items];
   return (
     <div
       className="absolute left-1/2 top-1/2 w-[160%]"
@@ -74,10 +78,10 @@ export default function MarqueeSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,65,28,0.12),transparent_70%)]" />
 
       {/* Tape 1 — leaning up-right */}
-      <Tape direction="marquee" rotate="-7deg" />
+      <Tape items={tape1Items} direction="marquee" rotate="-7deg" />
 
       {/* Tape 2 — leaning down-right, crosses the first — offset phase for organic sway */}
-      <Tape direction="marquee-reverse" rotate="7deg" swayDelay="-2.5s" />
+      <Tape items={tape2Items} direction="marquee-reverse" rotate="7deg" swayDelay="-2.5s" />
     </section>
   );
 }
