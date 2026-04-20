@@ -1,0 +1,139 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+
+// ─── Wave SVG (gold stroke) ───────────────────────────────────────────────────
+const Wave = () => (
+  <svg
+    width="129"
+    height="1387"
+    viewBox="0 0 129 1387"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="waves"
+  >
+    <path
+      d="M11.2131 11L106.283 106.07M106.283 106.07L117.279 117.066M106.283 106.07L22.2962 190.003M106.283 106.07L116.688 95.6708M11.2962 200.997L22.2962 190.003M22.2962 190.003L11.2529 178.96M22.2962 190.003L106.323 274.03M106.323 274.03L117.319 285.026M106.323 274.03L22.4537 357.846M106.323 274.03L116.728 263.631M11.3361 368.957L22.4537 357.846M22.4537 357.846L11.5493 346.901M22.4537 357.846L106.44 442.149M106.44 442.149L117.416 453.166M106.44 442.149L22.2962 525.925M106.44 442.149L116.865 431.769M11.2756 536.897L22.2962 525.925M22.2962 525.925L11.2737 514.861M22.2962 525.925L106.165 610.109M106.165 610.109L117.14 621.126M106.165 610.109L11 704.857M106.165 610.109L116.59 599.729M11.2131 683L106.283 778.07M106.283 778.07L117.279 789.066M106.283 778.07L22.2962 862.003M106.283 778.07L116.688 767.671M11.2962 872.997L22.2962 862.003M22.2962 862.003L11.2529 850.96M22.2962 862.003L106.323 946.03M106.323 946.03L117.319 957.026M106.323 946.03L22.4537 1029.85M106.323 946.03L116.728 935.631M11.3361 1040.96L22.4537 1029.85M22.4537 1029.85L11.5493 1018.9M22.4537 1029.85L106.44 1114.15M106.44 1114.15L117.416 1125.17M106.44 1114.15L22.2962 1197.92M106.44 1114.15L116.865 1103.77M11.2756 1208.9L22.2962 1197.92M22.2962 1197.92L11.2737 1186.86M22.2962 1197.92L106.165 1282.11M106.165 1282.11L117.14 1293.13M106.165 1282.11L11 1376.86M106.165 1282.11L116.59 1271.73"
+      stroke="rgba(200,65,28,0.12)"
+      strokeWidth="31"
+    />
+  </svg>
+);
+
+// ─── Cross SVG (gold stroke) ──────────────────────────────────────────────────
+const Cross = () => (
+  <svg
+    width="130"
+    height="130"
+    viewBox="0 0 130 130"
+    fill="none"
+    className="scale-125"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11 11L118.899 119M11.101 119L119 11"
+      stroke="rgba(200,65,28,0.1)"
+      strokeWidth="31"
+    />
+  </svg>
+);
+
+// ─── Wrapper ──────────────────────────────────────────────────────────────────
+export const PricingWrapper: React.FC<{
+  children: React.ReactNode;
+  type?: "waves" | "crosses";
+  contactHref?: string;
+  className?: string;
+  featured?: boolean;
+}> = ({ children, contactHref = "#apply-form", className, type = "waves", featured = false }) => (
+  <article
+    className={cn(
+      "relative overflow-hidden rounded-2xl w-full flex flex-col bg-dark-2",
+      featured
+        ? "border-2 border-gold/50 shadow-[0_0_32px_-6px_rgba(200,65,28,0.22)]"
+        : "border border-gold/15",
+      className
+    )}
+  >
+    {/* Top accent line for featured card */}
+    {featured && (
+      <div className="h-0.5 bg-gradient-to-r from-gold via-gold-light to-gold w-full shrink-0 relative z-10" />
+    )}
+
+    {/* Content layer — in normal flow so bottom padding always renders */}
+    <div className="relative z-[2] p-6 flex flex-col flex-1 gap-4">
+      {children}
+
+      {/* CTA always at bottom with proper spacing */}
+      <div className="w-full mt-auto pt-3">
+        <a href={contactHref} className="w-full block">
+          <button className="h-11 w-full bg-gold hover:bg-gold-light transition-colors duration-200 rounded-xl text-warm-white font-sans font-semibold text-sm">
+            Apply Now →
+          </button>
+        </a>
+      </div>
+    </div>
+
+    {/* Background decorations — absolute so they don't affect height */}
+    {type === "waves" && (
+      <>
+        <div className="w-fit h-fit absolute -top-[106px] sm:left-4 -left-0 z-0 pointer-events-none">
+          <Wave />
+        </div>
+        <div className="w-fit h-fit absolute -top-[106px] sm:right-4 -right-0 z-0 pointer-events-none">
+          <Wave />
+        </div>
+      </>
+    )}
+    {type === "crosses" && (
+      <>
+        <div className="w-fit h-fit absolute top-0 -left-10 z-0 animate-[spin_8s_linear_infinite] pointer-events-none">
+          <Cross />
+        </div>
+        <div className="w-fit h-fit absolute top-1/2 -right-12 z-0 animate-[spin_8s_linear_infinite] pointer-events-none">
+          <Cross />
+        </div>
+        <div className="w-fit h-fit absolute top-[85%] -left-5 z-0 animate-[spin_8s_linear_infinite] pointer-events-none">
+          <Cross />
+        </div>
+      </>
+    )}
+  </article>
+);
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
+export const CardHeading: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => (
+  <h3 className={cn("font-serif text-2xl text-warm-white font-light leading-tight relative z-10", className)}>
+    {children}
+  </h3>
+);
+
+export const CardPrice: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => (
+  <div className={cn("font-serif text-warm-white font-light leading-none relative z-10", className)}>
+    {children}
+  </div>
+);
+
+export const CardParagraph: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => (
+  <p className={cn("text-sm text-warm-white/70 leading-relaxed relative z-10", className)}>
+    {children}
+  </p>
+);
+
+export const CardNote: React.FC<{ children: React.ReactNode; className?: string }> = ({
+  children,
+  className,
+}) => (
+  <p className={cn("text-xs text-muted/60 font-sans relative z-10", className)}>
+    {children}
+  </p>
+);

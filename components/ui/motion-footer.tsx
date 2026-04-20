@@ -1,15 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const STYLES = `
@@ -133,26 +128,7 @@ const MarqueeItem = () => (
 // ─── Main component ───────────────────────────────────────────────────────────
 export function CinematicFooter() {
   const wrapperRef   = useRef<HTMLDivElement>(null);
-  const giantTextRef = useRef<HTMLDivElement>(null);
-  const headingRef   = useRef<HTMLHeadingElement>(null);
-  const linksRef     = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !wrapperRef.current) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(giantTextRef.current,
-        { y: "8vh", scale: 0.85, opacity: 0 },
-        { y: "0vh", scale: 1, opacity: 1, ease: "power1.out",
-          scrollTrigger: { trigger: wrapperRef.current, start: "top 85%", end: "bottom bottom", scrub: 1.2 } }
-      );
-      gsap.fromTo([headingRef.current, linksRef.current],
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.18, ease: "power3.out",
-          scrollTrigger: { trigger: wrapperRef.current, start: "top 45%", end: "bottom bottom", scrub: 1 } }
-      );
-    }, wrapperRef);
-    return () => ctx.revert();
-  }, []);
+  const inView       = useInView(wrapperRef, { once: true, margin: "-100px" });
 
   return (
     <>
@@ -174,32 +150,41 @@ export function CinematicFooter() {
           <div className="tbc-bg-grid absolute inset-0 z-0 pointer-events-none" />
 
           {/* Giant BG text */}
-          <div
-            ref={giantTextRef}
+          <motion.div
             className="tbc-giant-text absolute -bottom-[3vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
+            initial={{ y: "8vh", scale: 0.85, opacity: 0 }}
+            animate={inView ? { y: "0vh", scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             COUNSEL
-          </div>
+          </motion.div>
 
           {/* Center content */}
           <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-16 w-full max-w-5xl mx-auto">
-            <h2
-              ref={headingRef}
+            <motion.h2
               className="font-serif text-5xl md:text-7xl lg:text-8xl font-light tbc-heading-glow tracking-tight mb-3 text-center"
+              initial={{ y: 60, opacity: 0 }}
+              animate={inView ? { y: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               Ready to{" "}
               <span className="italic font-semibold" style={{ WebkitTextFillColor: "#C8411C", backgroundImage: "none", filter: "none" }}>
                 Dominate
               </span>
               <br className="hidden md:block" /> Your Market?
-            </h2>
+            </motion.h2>
 
             <p className="text-sm md:text-base mb-10 text-center max-w-md" style={{ color: "#8a8784" }}>
               We only take on a limited number of legal practices each quarter —
               to ensure every client gets our full attention and the results they deserve.
             </p>
 
-            <div ref={linksRef} className="flex flex-col items-center gap-5 w-full">
+            <motion.div
+              className="flex flex-col items-center gap-5 w-full"
+              initial={{ y: 60, opacity: 0 }}
+              animate={inView ? { y: 0, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            >
               {/* Primary CTA */}
               <div className="flex justify-center">
                 <MagneticButton
@@ -236,7 +221,7 @@ export function CinematicFooter() {
                   +1 (365) 805-5602
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Bottom bar */}

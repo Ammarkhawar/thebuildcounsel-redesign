@@ -32,6 +32,14 @@ const serviceOptions = [
   "Reputation Management",
 ];
 
+const oneTimePackages = [
+  { value: "authority-audit", label: "Authority Audit — $497", desc: "Full competitor & keyword roadmap" },
+  { value: "website-redesign", label: "Website Redesign — $3,000–$5,000", desc: "High-converting Webflow / WordPress site" },
+  { value: "gbp-cleanup", label: "GBP Cleanup — $350", desc: "Full Google Business Profile optimization" },
+  { value: "landing-page", label: "Landing Page — $800–$1,200", desc: "Single high-intent practice area page" },
+  { value: "seo-content-pack", label: "SEO Content Pack — $600", desc: "4 keyword-targeted blog posts / pages" },
+];
+
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function ApplicationForm() {
@@ -39,10 +47,12 @@ export default function ApplicationForm() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const [form, setForm] = useState({
+    intentType: "" as "monthly" | "onetime" | "",
     firmName: "",
     practiceArea: "",
     budget: "",
     services: [] as string[],
+    oneTimePackages: [] as string[],
     challenge: "",
     email: "",
   });
@@ -63,6 +73,15 @@ export default function ApplicationForm() {
     }));
   }
 
+  function handleOneTimeToggle(pkg: string) {
+    setForm((prev) => ({
+      ...prev,
+      oneTimePackages: prev.oneTimePackages.includes(pkg)
+        ? prev.oneTimePackages.filter((p) => p !== pkg)
+        : [...prev.oneTimePackages, pkg],
+    }));
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setFormState("submitting");
@@ -80,12 +99,14 @@ export default function ApplicationForm() {
   }
 
   const isValid =
+    form.intentType &&
     form.firmName.trim() &&
     form.practiceArea &&
-    form.budget &&
-    form.services.length > 0 &&
     form.challenge.trim() &&
-    form.email.trim();
+    form.email.trim() &&
+    (form.intentType === "monthly"
+      ? form.budget && form.services.length > 0
+      : form.oneTimePackages.length > 0);
 
   return (
     <section
@@ -157,86 +178,172 @@ export default function ApplicationForm() {
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <Field label="Firm Name" required>
-                    <input
-                      type="text"
-                      name="firmName"
-                      value={form.firmName}
-                      onChange={handleChange}
-                      placeholder="e.g. Johnson & Associates"
-                      required
-                      className="form-input"
-                    />
-                  </Field>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <Field label="Primary Practice Area" required>
-                      <select name="practiceArea" value={form.practiceArea} onChange={handleChange} required className="form-input">
-                        <option value="" disabled>Select area</option>
-                        {practiceAreas.map((a) => <option key={a} value={a}>{a}</option>)}
-                      </select>
-                    </Field>
-
-                    <Field label="Monthly Marketing Budget" required>
-                      <select name="budget" value={form.budget} onChange={handleChange} required className="form-input">
-                        <option value="" disabled>Select range</option>
-                        {budgetRanges.map((b) => <option key={b} value={b}>{b}</option>)}
-                      </select>
-                    </Field>
-                  </div>
-
-                  <Field label="Services you're interested in" required>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-0.5">
-                      {serviceOptions.map((service) => {
-                        const checked = form.services.includes(service);
+                  {/* Step 1 — Intent selector */}
+                  <Field label="What are you looking for?" required>
+                    <div className="grid grid-cols-2 gap-3 mt-0.5">
+                      {([
+                        { value: "monthly", title: "Monthly Plan", sub: "Foundation · Growth · Authority Stack™" },
+                        { value: "onetime", title: "One-time Project", sub: "Audit · Website · GBP · Content" },
+                      ] as const).map(({ value, title, sub }) => {
+                        const active = form.intentType === value;
                         return (
                           <button
-                            key={service}
+                            key={value}
                             type="button"
-                            onClick={() => handleServiceToggle(service)}
-                            className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border text-left text-sm font-sans transition-all duration-200 ${
-                              checked
-                                ? "border-gold/50 bg-gold/8 text-warm-white"
+                            onClick={() => setForm(prev => ({ ...prev, intentType: value, budget: "", services: [], oneTimePackages: [] }))}
+                            className={`flex items-start gap-3 px-4 py-4 rounded-xl border text-left transition-all duration-200 ${
+                              active
+                                ? "border-gold/60 bg-gold/10 text-warm-white"
                                 : "border-gold/10 bg-dark-3 text-muted hover:border-gold/25 hover:text-warm-white"
                             }`}
                           >
-                            <span className={`w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-all duration-200 ${checked ? "bg-gold border-gold" : "border-gold/25 bg-transparent"}`}>
-                              {checked && (
-                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                                  <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                              )}
+                            <span className={`mt-0.5 w-4 h-4 shrink-0 rounded-full border-2 flex items-center justify-center transition-all ${active ? "border-gold bg-gold" : "border-muted/40"}`}>
+                              {active && <span className="w-1.5 h-1.5 rounded-full bg-white block" />}
                             </span>
-                            {service}
+                            <span className="flex flex-col gap-0.5">
+                              <span className="text-sm font-sans font-medium leading-snug">{title}</span>
+                              <span className="text-[11px] text-muted/70 font-sans leading-snug">{sub}</span>
+                            </span>
                           </button>
                         );
                       })}
                     </div>
                   </Field>
 
-                  <Field label="What's your biggest growth challenge right now?" required>
-                    <textarea
-                      name="challenge"
-                      value={form.challenge}
-                      onChange={handleChange}
-                      placeholder="e.g. We're getting traffic but not converting it into consultations..."
-                      required
-                      rows={3}
-                      className="form-input resize-none"
-                    />
-                  </Field>
+                  {/* Animated fields that appear after intent is chosen */}
+                  <AnimatePresence mode="wait">
+                    {form.intentType && (
+                      <motion.div
+                        key={form.intentType}
+                        className="space-y-5"
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <Field label="Firm Name" required>
+                          <input
+                            type="text"
+                            name="firmName"
+                            value={form.firmName}
+                            onChange={handleChange}
+                            placeholder="e.g. Johnson & Associates"
+                            required
+                            className="form-input"
+                          />
+                        </Field>
 
-                  <Field label="Your Email" required>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="you@yourfirm.com"
-                      required
-                      className="form-input"
-                    />
-                  </Field>
+                        <Field label="Primary Practice Area" required>
+                          <select name="practiceArea" value={form.practiceArea} onChange={handleChange} required className="form-input">
+                            <option value="" disabled>Select area</option>
+                            {practiceAreas.map((a) => <option key={a} value={a}>{a}</option>)}
+                          </select>
+                        </Field>
+
+                        {/* Monthly-specific fields */}
+                        {form.intentType === "monthly" && (
+                          <>
+                            <Field label="Monthly Marketing Budget" required>
+                              <select name="budget" value={form.budget} onChange={handleChange} required className="form-input">
+                                <option value="" disabled>Select range</option>
+                                {budgetRanges.map((b) => <option key={b} value={b}>{b}</option>)}
+                              </select>
+                            </Field>
+
+                            <Field label="Services you're interested in" required>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-0.5">
+                                {serviceOptions.map((service) => {
+                                  const checked = form.services.includes(service);
+                                  return (
+                                    <button
+                                      key={service}
+                                      type="button"
+                                      onClick={() => handleServiceToggle(service)}
+                                      className={`flex items-center gap-3 px-4 py-2.5 rounded-xl border text-left text-sm font-sans transition-all duration-200 ${
+                                        checked
+                                          ? "border-gold/50 bg-gold/8 text-warm-white"
+                                          : "border-gold/10 bg-dark-3 text-muted hover:border-gold/25 hover:text-warm-white"
+                                      }`}
+                                    >
+                                      <span className={`w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-all duration-200 ${checked ? "bg-gold border-gold" : "border-gold/25 bg-transparent"}`}>
+                                        {checked && (
+                                          <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                                            <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                          </svg>
+                                        )}
+                                      </span>
+                                      {service}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </Field>
+                          </>
+                        )}
+
+                        {/* One-time-specific fields */}
+                        {form.intentType === "onetime" && (
+                          <Field label="Which services are you interested in?" required>
+                            <div className="space-y-2 mt-0.5">
+                              {oneTimePackages.map((pkg) => {
+                                const checked = form.oneTimePackages.includes(pkg.value);
+                                return (
+                                  <button
+                                    key={pkg.value}
+                                    type="button"
+                                    onClick={() => handleOneTimeToggle(pkg.value)}
+                                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left text-sm font-sans transition-all duration-200 ${
+                                      checked
+                                        ? "border-gold/50 bg-gold/10 text-warm-white"
+                                        : "border-gold/10 bg-dark-3 text-muted hover:border-gold/25 hover:text-warm-white"
+                                    }`}
+                                  >
+                                    <span className={`w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-all duration-200 ${checked ? "bg-gold border-gold" : "border-gold/25 bg-transparent"}`}>
+                                      {checked && (
+                                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
+                                          <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                      )}
+                                    </span>
+                                    <div>
+                                      <span className="font-medium text-warm-white">{pkg.label}</span>
+                                      <span className="block text-[11px] text-muted/70 mt-0.5">{pkg.desc}</span>
+                                    </div>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </Field>
+                        )}
+
+                        <Field label={form.intentType === "onetime" ? "Anything else you'd like us to know?" : "What's your biggest growth challenge right now?"} required>
+                          <textarea
+                            name="challenge"
+                            value={form.challenge}
+                            onChange={handleChange}
+                            placeholder={form.intentType === "onetime"
+                              ? "e.g. We just launched and need a baseline before committing to a retainer..."
+                              : "e.g. We're getting traffic but not converting it into consultations..."}
+                            required
+                            rows={3}
+                            className="form-input resize-none"
+                          />
+                        </Field>
+
+                        <Field label="Your Email" required>
+                          <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            placeholder="you@yourfirm.com"
+                            required
+                            className="form-input"
+                          />
+                        </Field>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   <div className="pt-2">
                     <MagneticButton
