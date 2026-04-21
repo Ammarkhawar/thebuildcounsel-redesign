@@ -146,7 +146,7 @@ export default function AuthorityStack() {
         </motion.div>
 
         {/* Pillar Cards — 4 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {pillars.map((pillar, i) => (
             <motion.div
               key={pillar.num}
