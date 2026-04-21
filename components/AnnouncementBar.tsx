@@ -24,7 +24,7 @@ export default function AnnouncementBar() {
           Limited Spots — We only take on{" "}
           <strong className="font-semibold">3 new firms per month</strong>{" "}
           for our law firm SEO and marketing program.{" "}
-          <a href="#apply-form" className="underline underline-offset-4 decoration-white/70 hover:decoration-white transition ml-1">
+          <a href="#apply" className="underline underline-offset-4 decoration-white/70 hover:decoration-white transition ml-1">
             Book your strategy call →
           </a>
         </span>

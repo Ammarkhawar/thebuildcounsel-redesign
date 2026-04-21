@@ -189,7 +189,7 @@ export function CinematicFooter() {
               <div className="flex justify-center">
                 <MagneticButton
                   as="a"
-                  href="#apply-form"
+                  href="#apply"
                   className="btn-primary px-10 py-4 text-base flex items-center gap-3 group"
                 >
                   Apply Now

@@ -272,7 +272,7 @@ export default function Pricing() {
               <div className="px-6 pb-6 mt-auto">
                 <MagneticButton
                   as="a"
-                  href="#apply-form"
+                  href="#apply"
                   className={`w-full justify-center text-sm py-3.5 ${pkg.popular ? "btn-primary" : "btn-ghost"}`}
                 >
                   Apply Now

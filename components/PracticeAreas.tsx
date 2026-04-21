@@ -69,7 +69,7 @@ export default function PracticeAreas() {
           transition={{ delay: 0.8 }}
         >
           Don&apos;t see your area of law?{" "}
-          <a href="#apply-form" className="text-gold hover:text-gold-light underline underline-offset-2 transition-colors">
+          <a href="#apply" className="text-gold hover:text-gold-light underline underline-offset-2 transition-colors">
             We cover more than you think. →
           </a>
         </motion.p>

@@ -46,7 +46,7 @@ export default function Stats() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <MagneticButton as="a" href="#apply-form" className="btn-primary text-sm px-8 py-3.5">
+          <MagneticButton as="a" href="#apply" className="btn-primary text-sm px-8 py-3.5">
             Apply Now
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

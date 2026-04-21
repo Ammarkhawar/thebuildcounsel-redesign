@@ -139,7 +139,7 @@ export default function AuthorityStack() {
             </div>
 
             {/* CTA */}
-            <a href="#apply-form" className="text-gold text-sm font-sans hover:text-gold-light transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap">
+            <a href="#apply" className="text-gold text-sm font-sans hover:text-gold-light transition-colors flex items-center gap-1.5 shrink-0 whitespace-nowrap">
               Get started →
             </a>
           </div>

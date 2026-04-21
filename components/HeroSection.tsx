@@ -381,7 +381,7 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-            <MagneticButton as="a" href="#apply-form" className="btn-primary text-sm py-3 px-6">
+            <MagneticButton as="a" href="#apply" className="btn-primary text-sm py-3 px-6">
               Apply Now
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
