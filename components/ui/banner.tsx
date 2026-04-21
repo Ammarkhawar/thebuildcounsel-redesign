@@ -45,7 +45,7 @@ export function Banner({
         variant === "rainbow" && "bg-dark text-warm-white",
         props.className,
       )}
-      style={{ height }}
+      style={height ? { height } : undefined}
     >
       {variant === "rainbow" ? <Flow colors={rainbowColors} /> : null}
 
