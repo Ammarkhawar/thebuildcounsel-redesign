@@ -10,7 +10,7 @@ export function Banner({
   id,
   xColor,
   variant = "normal",
-  height = "3rem",
+  height,
   rainbowColors = [
     "rgba(0,149,255,0.56)",
     "rgba(231,77,255,0.77)",
