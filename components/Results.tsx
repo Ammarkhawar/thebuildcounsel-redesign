@@ -183,9 +183,9 @@ export default function Results() {
               {[...recentClients, ...recentClients].map((c, i) => (
                 <div
                   key={`${c.name}-${i}`}
-                  className="shrink-0 flex items-center justify-center mx-4 md:mx-8 h-16 md:h-20 w-44 md:w-56 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className="shrink-0 flex items-center justify-center mx-2 md:mx-4 h-16 md:h-20 w-36 md:w-48 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 >
-                  <div className="relative w-full h-full scale-[1.6]">
+                  <div className="relative w-full h-full scale-[2.2]">
                     <Image
                       src={c.logo}
                       alt={c.name}
