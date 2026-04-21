@@ -124,34 +124,6 @@ export default function Results() {
           ))}
         </motion.div>
 
-        {/* $6 billion+ big stat */}
-        <motion.div
-          className="relative text-center border-t border-gold/10 pt-20 md:pt-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.4 }}
-        >
-          {/* Radial warm glow behind the headline */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute top-16 left-1/2 -translate-x-1/2 w-[80%] h-[70%] bg-gold/10 blur-[120px] rounded-full -z-0"
-          />
-
-          {/* Tie icon */}
-          <div className="relative z-10 flex justify-center mb-6">
-            <TieIcon className="w-14 h-14 md:w-20 md:h-20 text-gold drop-shadow-[0_4px_20px_rgba(200,65,28,0.35)]" />
-          </div>
-
-          <h3 className="relative z-10 font-serif text-7xl sm:text-8xl md:text-9xl lg:text-[11rem] xl:text-[13rem] font-bold text-warm-white leading-[0.9] tracking-tight mb-8">
-            $6 billion+
-          </h3>
-
-          <p className="relative z-10 font-sans text-base md:text-lg text-warm-white/70 max-w-xl mx-auto mb-10">
-            in signed case value generated for the firms we represent.
-          </p>
-
-        </motion.div>
-
         {/* Recent clients — auto-scrolling marquee */}
         <motion.div
           className="relative border-t border-gold/10 mt-20 md:mt-24 pt-14"
