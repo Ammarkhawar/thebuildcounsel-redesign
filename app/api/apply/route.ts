@@ -25,7 +25,7 @@ export async function POST(req: Request) {
       : `<p><strong>One-time packages:</strong> ${(oneTimePackages as string[]).join(", ")}</p>`;
 
     const { error } = await resend.emails.send({
-      from: "The Build Counsel <onboarding@resend.dev>",
+      from: "The Build Counsel <hello@thebuildcounsel.com>",
       to: ["info@thebuildcounsel.com"],
       replyTo: email,
       subject: `New ${isMonthly ? "Monthly Plan" : "One-time Project"} Application — ${firmName}`,
