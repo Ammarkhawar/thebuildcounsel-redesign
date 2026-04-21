@@ -7,7 +7,7 @@ export default function AnnouncementBar() {
     <Banner
       id="tbc-limited-spots"
       variant="rainbow"
-      className="bg-announcement shadow-[0_2px_16px_-4px_rgba(120,30,10,0.55)] border-b border-warm-white/15 py-2 md:py-0 md:h-12"
+      className="bg-announcement shadow-[0_2px_16px_-4px_rgba(120,30,10,0.55)] border-b border-warm-white/15 py-3"
       rainbowColors={[
         "rgba(255,255,255,0.38)",
         "rgba(255,225,195,0.32)",
@@ -18,7 +18,7 @@ export default function AnnouncementBar() {
         "transparent",
       ]}
     >
-      <span className="inline-flex items-center gap-2 px-6 text-xs sm:text-sm font-sans font-medium text-white text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
+      <span className="inline-flex items-center gap-2 px-6 text-sm font-sans font-medium text-white text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
         <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full bg-white animate-pulse" />
         <span>
           Limited Spots — We only take on{" "}
