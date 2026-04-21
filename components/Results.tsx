@@ -15,9 +15,33 @@ const recentClients = [
   { name: "client logo", logo: "/client-1.png" },
   { name: "client logo", logo: "/client-2.png" },
   { name: "client logo", logo: "/client-3.png" },
-  { name: "client logo", logo: "/client-gummie.png" },
-  { name: "client logo", logo: "/client-full.png" },
-  { name: "client logo", logo: "/client-eden.png" },
+  { name: "client logo", logo: "/client-4.png" },
+  { name: "client logo", logo: "/client-5.png" },
+  { name: "client logo", logo: "/client-6.png" },
+  { name: "client logo", logo: "/client-7.png" },
+  { name: "client logo", logo: "/client-8.png" },
+  { name: "client logo", logo: "/client-9.png" },
+  { name: "client logo", logo: "/client-10.png" },
+  { name: "client logo", logo: "/client-11.png" },
+  { name: "client logo", logo: "/client-12.png" },
+  { name: "client logo", logo: "/client-13.png" },
+  { name: "client logo", logo: "/client-14.png" },
+  { name: "client logo", logo: "/client-15.png" },
+  { name: "client logo", logo: "/client-16.png" },
+  { name: "client logo", logo: "/client-17.png" },
+  { name: "client logo", logo: "/client-18.png" },
+  { name: "client logo", logo: "/client-19.png" },
+  { name: "client logo", logo: "/client-20.png" },
+  { name: "client logo", logo: "/client-21.png" },
+  { name: "client logo", logo: "/client-22.png" },
+  { name: "client logo", logo: "/client-23.png" },
+  { name: "client logo", logo: "/client-24.png" },
+  { name: "client logo", logo: "/client-25.png" },
+  { name: "client logo", logo: "/client-26.png" },
+  { name: "client logo", logo: "/client-27.png" },
+  { name: "client logo", logo: "/client-28.png" },
+  { name: "client logo", logo: "/client-29.png" },
+  { name: "client logo", logo: "/client-30.png" },
 ];
 
 function TieIcon({ className }: { className?: string }) {
@@ -159,15 +183,15 @@ export default function Results() {
               {[...recentClients, ...recentClients].map((c, i) => (
                 <div
                   key={`${c.name}-${i}`}
-                  className="shrink-0 flex items-center justify-center mx-8 md:mx-14 h-16 md:h-20 w-32 md:w-44 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                  className="shrink-0 flex items-center justify-center mx-4 md:mx-8 h-16 md:h-20 w-44 md:w-56 opacity-60 hover:opacity-100 transition-opacity duration-300"
                 >
-                  <div className="relative w-full h-full">
+                  <div className="relative w-full h-full scale-[1.6]">
                     <Image
                       src={c.logo}
                       alt={c.name}
                       fill
                       className="object-contain"
-                      sizes="(min-width: 768px) 176px, 128px"
+                      sizes="(min-width: 768px) 224px, 176px"
                     />
                   </div>
                 </div>
