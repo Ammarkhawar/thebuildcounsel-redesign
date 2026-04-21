@@ -164,18 +164,14 @@ function FaqItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
         </motion.span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-          >
-            <p className="text-sm text-muted leading-relaxed px-5 pb-5">{faq.a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        initial={false}
+        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        style={{ overflow: "hidden" }}
+      >
+        <p className="text-sm text-muted leading-relaxed px-5 pb-5">{faq.a}</p>
+      </motion.div>
     </motion.div>
   );
 }

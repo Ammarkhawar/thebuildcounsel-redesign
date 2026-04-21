@@ -137,12 +137,51 @@ const schemaMarkup = {
     "@type": "OfferCatalog",
     "name": "Legal Marketing Services",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Law Firm SEO Services" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Legal Marketing" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads for Law Firms" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Search Optimization" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Legal Website Design" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reputation Management" } }
+      {
+        "@type": "Offer",
+        "name": "Starter Plan",
+        "description": "Search Authority (SEO & AI Search) for Canadian law firms.",
+        "price": "2000",
+        "priceCurrency": "CAD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "2000", "priceCurrency": "CAD", "unitText": "MONTH" },
+        "itemOffered": { "@type": "Service", "name": "Law Firm SEO & AI Search" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Growth Plan",
+        "description": "Search Authority + Paid Acquisition (Google Ads & LSA) for law firms.",
+        "price": "3500",
+        "priceCurrency": "CAD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "3500", "priceCurrency": "CAD", "unitText": "MONTH" },
+        "itemOffered": { "@type": "Service", "name": "Law Firm SEO + Google Ads" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Authority Stack™ (Full System)",
+        "description": "Complete legal marketing system: SEO, paid ads, social, web design, and reputation management.",
+        "price": "5000",
+        "priceCurrency": "CAD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "5000", "priceCurrency": "CAD", "unitText": "MONTH" },
+        "itemOffered": { "@type": "Service", "name": "Full Legal Marketing System" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Authority Audit",
+        "description": "Full competitor and keyword roadmap. Credited toward your first month.",
+        "price": "497",
+        "priceCurrency": "CAD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "497", "priceCurrency": "CAD", "unitText": "FLAT" },
+        "itemOffered": { "@type": "Service", "name": "Law Firm SEO Audit" }
+      },
+      {
+        "@type": "Offer",
+        "name": "Website Redesign",
+        "description": "High-converting law firm website built in Webflow or WordPress.",
+        "price": "3000",
+        "priceCurrency": "CAD",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "3000", "priceCurrency": "CAD", "unitText": "FLAT" },
+        "itemOffered": { "@type": "Service", "name": "Law Firm Website Design" }
+      }
     ]
   },
   "priceRange": "$$$",
