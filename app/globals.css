@@ -56,7 +56,7 @@
   }
 
   .section-pad {
-    @apply py-24 md:py-32;
+    @apply py-14 md:py-20;
   }
 
   .max-w-site {
