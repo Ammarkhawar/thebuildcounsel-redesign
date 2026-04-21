@@ -45,7 +45,7 @@ export const PricingWrapper: React.FC<{
   contactHref?: string;
   className?: string;
   featured?: boolean;
-}> = ({ children, contactHref = "#apply-form", className, type = "waves", featured = false }) => (
+}> = ({ children, contactHref = "#apply", className, type = "waves", featured = false }) => (
   <article
     className={cn(
       "relative overflow-hidden rounded-2xl w-full flex flex-col bg-dark-2",
